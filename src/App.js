@@ -1,19 +1,18 @@
-import './App.css';
 import { TodoCounter } from './components/TodoCounter.js'
+import { TodoSearch } from './components/TodoSearch.js'
+import { TodoList } from './components/TodoList.js'
+import { CreateTodoButton } from './components/CreateTodoButton.js'
 import React from 'react'
+import './index.css'
 
 function App() {
   return (
-    <React.Fragment>
+    <div className='App'>
       <TodoCounter/>
-      {/* <TodoSearch/> */}
-      <input placeholder='Add a new todo...' />
-      {/* <TodoList>
-        <TodoItem/>
-      </TodoList>
-      <CreateTodoButton/> */}
-      <button>+</button>
-    </React.Fragment>
+      <TodoSearch/>
+      <TodoList/>
+      <CreateTodoButton/>
+    </div>
   );
 }
 

@@ -1,13 +1,48 @@
-body {
+*{
+  padding: 0px;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: monospace
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#root{
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #9ff, #ccf)
+}
+
+.App{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+  gap: 40px;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+}
+
+
+
+.TodoCounter{
+  font-size: 18px;
+}
+
+.TodoSearch{
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 80px;
+}
+
+.TodoList{
+  list-style-type: none;
+}
+
+.TodoItem{
+  padding: 10px 100px;
+  border-radius: 40px;
+  outline: 2px solid #000;
+  margin-bottom: 20px;
+  background-image: linear-gradient(to right, #ccf, #9ff )
 }
