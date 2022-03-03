@@ -1,6 +1,6 @@
 import React from 'react'
 import '../index.css';
-import { TodoItem } from './TodoItem.js'
+import { TodoItem } from './TodoItem.jsx'
 
 const tasks = [
     { text: 'task 1', done: false },
