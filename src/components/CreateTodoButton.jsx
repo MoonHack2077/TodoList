@@ -6,7 +6,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 function CreateTodoButton(){
     return (
       <div className='CreateTodoButton'>
-        <FontAwesomeIcon icon={faPlus}/>
+        <FontAwesomeIcon icon={faPlus} className='add'/>
       </div>
     )
 }
