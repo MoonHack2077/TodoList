@@ -7,7 +7,7 @@ import { Task } from '../Task';
 //     return Math.floor(Math.random() * 200);
 // }
 
-let id = 0;
+let id = 1;
 const tasks = [
     new Task('Learn React', id++, true),
     new Task('Learn Sass',id++, true),

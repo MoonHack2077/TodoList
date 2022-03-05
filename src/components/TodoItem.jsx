@@ -4,19 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
 
 
-// let checked = false;
-
 function TodoItem(props){
-    const check = e => e.target.classList.toggle('icon-check');
+    const check = (e) => {
+        console.log(e.target);
+        e.target.classList.toggle('icon-check');
+        // document.getElementById(`${e.target.parentElement.id}`).classList.toggle('icon-check');
+    };
     const remove = () => console.log('remove .-.');
 
     return (
         <li id={props.id} className='TodoItem' >
-            <FontAwesomeIcon icon={faTrash} className='icon trash' onClick={remove} />
             <div>
-                <p>{props.text}</p>
+                <FontAwesomeIcon icon={faTrash} className='icon trash' onClick={remove} />
             </div>
-            <FontAwesomeIcon icon={faCheck} className={`icon check`} onClick={e => check(e)} />
+            <div>
+                <p className='text' >{props.text}</p>
+            </div>
+            <div className='icontainer' onClick={e=>check(e)}>
+                <FontAwesomeIcon icon={faCheck} className={`icon check`}/>
+            </div>
         </li>
     )
 }
