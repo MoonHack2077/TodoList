@@ -1,34 +1,28 @@
-import React from 'react'
+import React from 'react';
 import '../index.css';
-import { TodoItem } from './TodoItem.jsx'
+import { TodoItem } from './TodoItem.jsx';
+import { Task } from '../Task';
 
+// function randomId(){
+//     return Math.floor(Math.random() * 200);
+// }
+
+let id = 0;
 const tasks = [
-    { text: 'task 1', done: false },
-    { text: 'task 2', done: false },
-    { text: 'task 3', done: false },
-    { text: 'task 4', done: false },
-    { text: 'task 5', done: false },
-    { text: 'task 6', done: false },
-    { text: 'task 7', done: false },
-    { text: 'task 8', done: false },
-    { text: 'task 9', done: false },
-    { text: 'task 10', done: false },
-    { text: 'task 11', done: false },
-    { text: 'task 14', done: false },
-    { text: 'task 15', done: false },
-    { text: 'task 16', done: false },
-    { text: 'task 17', done: false },
-    { text: 'task 18', done: false }
+    new Task('Learn React', id++, true),
+    new Task('Learn Sass',id++, true),
+    new Task('el epep',id++, false)
 ]
-
+// console.log( tasks.findIndex(idx => idx.id===0) )
 function TodoList(){
+
     return (
         <section>
             <ul className='TodoList'>
-                {tasks.map( task => <TodoItem key={task.text} text={task.text}/> )}
+                {tasks.map( task => <TodoItem id={task.id} key={task.id} text={task.name}  /> )}
             </ul>
         </section>
     )
 }
 
-export { TodoList }
+export { TodoList, tasks }

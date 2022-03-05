@@ -67,7 +67,9 @@
 .icon{
   transition: transform .3s cubic-bezier(0.455, 0.03, 0.515, 0.955)
 }
-
+.icon-check{
+  color: green;
+}
 .trash:hover{
   color: #923;
   transform: scale(1.2);
