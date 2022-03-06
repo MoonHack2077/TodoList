@@ -4,67 +4,23 @@
   font-family: monospace
 }
 
-#root{
-  display: grid;
-  place-items: center;
-  width: 100%;
-  height: 100vh;
-  background-image: linear-gradient( #ddd, #999)
-  /* background-color: #ddd; */
+:root{
+  --nav-color: #444;
+  --nav-padding: 10px;
+  --add-todo: #45f;
+  --edit-todo: #67f;
+  --delete-todo: #f51;
+  --input-padding: 8px;
+  --input-radio: 8px;
 }
 
-.App{
-  display: grid;
-  grid-template-rows: auto 60px 1fr;
-  grid-template-columns: 350px;
-  gap: 15px;
-  place-items: center;
-}
-
-
-
-.TodoCounter{
+/* .TodoCounter{
   font-size: 40px;
   word-break: break-word;
   text-align: center;
-}
+} */
 
-.TodoSearch{
-  border: none;
-  outline: none;
-  padding: 12px 0px 12px 15px;
-  width: 270px;
-  border-radius: 80px;
-}
-
-.TodoList{
-  list-style-type: none;
-  overflow-y: auto; 
-  max-height: 400px;
-  padding: 30px;
-  /* --webkit-overflow-scrolling: 2em; */
-}
-
-
-/*TodoItem*/
-.TodoItem{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  gap: 20px;
-  width: 250px;
-  padding: 10px 20px;
-  border-radius: 40px;
-  outline: 2px solid #000;
-  margin-bottom: 20px;
-  /* background-image: linear-gradient(to right, #ccf, #9ff ); */
-  background-color: #eee;
-  font-size: 20px;
-  word-break: break-word;
-}
-
-.icon{
+/* .icon{
   transition: transform .3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   user-select:none;
 }
@@ -78,27 +34,5 @@
 .check:hover{
   color: green;
   transform: scale(1.2);
-}
+} */
 
-/*BUTTON*/
-.CreateTodoButton{
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  /* background-image: linear-gradient(to right, #ccf, #9ff ); */
-  outline: 2px solid #000;
-  width:50px;
-  height: 50px;
-  border-radius: 50%;
-  color: #000;
-  font-size: 40px;
-  text-align: center;
-  padding: 3px;
-  background-color: #eee;
-}
-.add{
-  transition: transform .8s ease-in-out;
-}
-.CreateTodoButton:hover .add{
-  transform: rotate(450deg);
-}

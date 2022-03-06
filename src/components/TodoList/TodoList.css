@@ -1,0 +1,7 @@
+.TodoList{
+    list-style-type: none;
+    overflow-y: auto; 
+    max-height: 400px;
+    padding: 30px;
+    /* --webkit-overflow-scrolling: 2em; */
+  }

@@ -1,7 +1,7 @@
 import React from 'react';
-import '../index.css';
+import './TodoList.css';
 import { TodoItem } from './TodoItem.jsx';
-import { Task } from '../Task';
+import { Task } from '../../Task';
 
 // function randomId(){
 //     return Math.floor(Math.random() * 200);

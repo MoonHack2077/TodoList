@@ -1,0 +1,23 @@
+.navBar{
+    display :flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--nav-padding) 25px;
+    background-color: var(--nav-color)
+}
+.navBar-icon{
+  color: #fff;
+  font-size: 25px;
+}
+.filters-container{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.filters{
+  color: #adf;
+  font-size: 18px;
+}
