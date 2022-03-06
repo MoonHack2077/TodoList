@@ -1,5 +1,5 @@
 .checkboxes-label{
     margin-left: 3px;
-    color: #fff;
+    color: var(--label-color);
     font-size: 17px;
 }

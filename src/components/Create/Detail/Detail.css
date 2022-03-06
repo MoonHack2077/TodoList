@@ -1,0 +1,21 @@
+.Detail{
+    display: flex;
+    max-width: max-content;
+    min-width: min-content;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.input-detail{
+    outline: none;
+    border: none;
+    padding: var(--input-padding);
+    border-radius: var(--input-radio)
+}
+
+.Detail-label{
+    font-size: 20px;
+    color: var(--label-color);
+}

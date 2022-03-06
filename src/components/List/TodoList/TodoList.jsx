@@ -1,7 +1,8 @@
 import React from 'react';
 import './TodoList.css';
-import { TodoItem } from './TodoItem/TodoItem.jsx';
-import { Task } from '../../Task';
+import { TodoItem } from '../TodoItem/TodoItem.jsx';
+import { NavList } from '../NavList/NavList.jsx';
+import { Task } from '../../../Task';
 
 // function randomId(){
 //     return Math.floor(Math.random() * 200);
@@ -18,6 +19,7 @@ function TodoList(){
 
     return (
         <section>
+            <NavList/>
             <ul className='TodoList'>
                 {tasks.map( task => <TodoItem id={task.id} key={task.id} text={task.name}  /> )}
             </ul>

@@ -4,3 +4,18 @@
     background-color: #222;
   }
   
+.xd{
+  display: grid;
+  place-items: center;
+  padding: 40px;
+}
+
+.Details{
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #fff;
+}

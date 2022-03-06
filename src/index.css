@@ -12,6 +12,7 @@
   --delete-todo: #f51;
   --input-padding: 8px;
   --input-radio: 8px;
+  --label-color: #fff;
 }
 
 /* .TodoCounter{
