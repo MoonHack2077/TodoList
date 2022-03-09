@@ -19,14 +19,26 @@ function TodoList(){
 
     return (
         <section className='TodoList-container'>
-            <div className='NavList'> 
-                <div><span className='indicator'>Title</span></div>
-                <div><span className='indicator'>Description</span></div>
-                <div><span className='indicator'>Completed</span></div>
-            </div>
-            <ul className='TodoList'>
+                <div>
+                    <span className='indicator'>Title</span>
+                </div>
+                <div>
+                    <span className='indicator'>Description</span>
+                </div>
+                <div>
+                    <span className='indicator'>Completed</span>
+                </div>
+                <div>
+                    <span className='indicator'>other</span>
+                </div>
+                
+                <TodoItem/>
+                <TodoItem/>
+                <TodoItem/>
+                <TodoItem/>
+            {/* <ul className='TodoList'>
                 {tasks.map( task => <TodoItem id={task.id} key={task.id} text={task.name}  /> )}
-            </ul>
+            </ul> */}
         </section>
     )
 }

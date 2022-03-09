@@ -1,4 +1,4 @@
-.TodoItem{
+/* .TodoItem{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,8 +9,8 @@
     border-radius: 40px;
     outline: 2px solid #000;
     margin-bottom: 20px;
-    /* background-image: linear-gradient(to right, #ccf, #9ff ); */
+     background-image: linear-gradient(to right, #ccf, #9ff ); 
     background-color: #eee;
     font-size: 20px;
     word-break: break-word;
-  }
+  } */

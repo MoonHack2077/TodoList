@@ -7,11 +7,41 @@
 }
 
 .TodoList-container{
+  width: 100%;
   outline: 1px solid blue;
+  display: grid;
+  /* grid-template-columns: repeat(3,100px) ;
+  margin: 100px 0px; */
+
+  grid-template-columns: repeat(4,auto);
+  /* grid-auto-rows: min-content; */
+
+  color: #fff;
+  gap: 40px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  /* justify-content: space-between; */
+  justify-content: space-around;
+  /* align-items: center; */
+  padding-bottom: 30px;
 }
 
 .NavList{
   display: grid;
-  grid-template-columns: repeat(3,100px) ;
-  margin: 100px 0px;
+  /* grid-template-columns: repeat(3,100px) ;
+  margin: 100px 0px; */
+
+  grid-template-columns: repeat(3,auto);
+  /* grid-auto-rows: min-content; */
+
+color: #fff;
+  width: 100%;
+  gap: 40px;
+  flex-wrap: wrap;
+  /* justify-content: flex-start; */
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
+  align-items: center;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #111;
 }

@@ -1,39 +1,33 @@
 import React from 'react';
 import './TodoItem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
 
 function TodoItem(props){
-    const check = e => {
-        console.log(e.target);
-        console.log(e.target.parentElement);
-        const target = e.target;
-        const parent = target.parentElement
-
-        if(target.classList.contains('icon-check')){
-            target.classList.remove('icon-check');
-            parent.classList.remove('icon-check');
-        }else{
-            target.classList.remove('icon-check');
-            parent.classList.remove('icon-check');
-        }
-        // document.getElementById(`${e.target.parentElement.id}`).classList.toggle('icon-check');
-    };
     const remove = () => console.log('remove .-.');
+    const edit = () => console.log('edit xd');
 
     return (
-        <li id={props.id} className='TodoItem' >
+        <React.Fragment>
+            
             <div>
-                <FontAwesomeIcon icon={faTrash} className='icon trash' onClick={remove} />
+                <p className='text' >xs</p>
+            </div>
+            
+            <div>
+                <p className='text' >xs</p>
+            </div>
+            
+            <div>
+                <input type='checkbox' />
             </div>
             <div>
-                <p className='text' >{props.text}</p>
+                <button onClick={remove}><FontAwesomeIcon icon={faPencilAlt} /></button>
+                <button onClick={edit}><FontAwesomeIcon icon={faTrash} className='icon trash'/></button>
             </div>
-            <div className='icontainer' onClick={check}>
-                <FontAwesomeIcon icon={faCheck} className={`icon check`}/>
-            </div>
-        </li>
+            
+        </React.Fragment>
     )
 }
 
