@@ -8,7 +8,7 @@ import { Task } from '../../../Task';
 //     return Math.floor(Math.random() * 200);
 // }
 
-// let id = 1;
+let id = 1;
 // const task={
 //     id: null,
 //     title:null,
@@ -16,39 +16,65 @@ import { Task } from '../../../Task';
 //     completed: null
 // }
 const tasks = [
-    new Task({title: 'Learn React', description: 'xs'}),
-    new Task({title: 'Learn React', description: 'xs'}),
-    new Task({title: 'Learn React', description: 'xs'})
+    new Task({title: 'Learn React', description: 'xs', id: id++}),
+    new Task({title: 'Learn React', description: 'xs', id: id++}),
+    new Task({title: 'Learn React', description: 'xs', id: id++})
 ]
 // console.log( tasks.findIndex(idx => idx.id===0) )
 function TodoList(){
-    let  [id,setId] = React.useState(1); 
-
     return (
-        <section className='TodoList-container'>
-                <div className='TodoList-container-xd' >
-                    <div>
-                        <span className='indicator'>Title</span>
-                    </div>
-                    <div>
-                        <span className='indicator'>Description</span>
-                    </div>
-                    <div>
-                        <span className='indicator'>Completed</span>
-                    </div>
-                    <div>
-                        <span className='indicator'>other</span>
-                    </div>
+        <table class="table table-striped" id="table">
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+              <th scope="col">
+                <div class="d-flex justify-content-center">
+                  Completed
                 </div>
-                
-                <section className='TodoItem-container' onChange={()=>setId(id++)}>
-                    {tasks.map( task => <TodoItem id={id} key={task.id} title={task.title} description={task.description}  /> )}
-                </section>
-            {/* <ul className='TodoList'>
-                {tasks.map( task => <TodoItem id={task.id} key={task.id} text={task.name}  /> )}
-            </ul> */}
-        </section>
+              </th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Learn JS
+              </td>
+              <td>
+                Watch Javascript tutorials on Youtube
+              </td>
+              <td class="text-center">
+                <input type="checkbox"/>
+              </td>
+              <td class="text-right">
+                <button class="btn btn-primary mb-1">
+                  <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-danger mb-1 ml-1">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
     )
+        {/* <section className='TodoList-container'>
+        //         <ul className='TodoList-container-xd' >
+        //             <li className='indicators' key='indicators'>
+        //                 <span className='indicator'>Title</span>
+        //                 <span className='indicator'>Description</span>
+        //                 <span className='indicator'>Completed</span>
+        //             </li>
+        //             {tasks.map( task => <li className='todo' id={task.id}><TodoItem key={task.id} title={task.title} description={task.description}/></li> )}
+        //         </ul>
+                
+        //     {<ul className='TodoList'>
+        //         {tasks.map( task => <TodoItem id={task.id} key={task.id} text={task.name}  /> )}
+        //     </ul> }
+        // </section> */}
+    
 }
 
 export { TodoList, tasks }
