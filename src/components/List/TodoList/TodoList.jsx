@@ -9,6 +9,12 @@ import { Task } from '../../../Task';
 // }
 
 // let id = 1;
+// const task={
+//     id: null,
+//     title:null,
+//     description: null,
+//     completed: null
+// }
 const tasks = [
     new Task({title: 'Learn React', description: 'xs'}),
     new Task({title: 'Learn React', description: 'xs'}),
@@ -16,8 +22,7 @@ const tasks = [
 ]
 // console.log( tasks.findIndex(idx => idx.id===0) )
 function TodoList(){
-    const  [id,setId] = React.useState(1)
-
+    let  [id,setId] = React.useState(1); 
 
     return (
         <section className='TodoList-container'>
@@ -36,7 +41,7 @@ function TodoList(){
                     </div>
                 </div>
                 
-                <section className='TodoItem-container' onChange={id=>setId(id++)}>
+                <section className='TodoItem-container' onChange={()=>setId(id++)}>
                     {tasks.map( task => <TodoItem id={id} key={task.id} title={task.title} description={task.description}  /> )}
                 </section>
             {/* <ul className='TodoList'>
