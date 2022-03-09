@@ -1,8 +1,9 @@
 class Task{
-    constructor( name , id ,done ){
-        this.name=name;
+    constructor( {title , id, description} ){
+        this.title=title;
+        this.description=description;
         this.id=id;
-        this.done=done;
+        this.done=false;
     }
     // check(){
     //     this.done= !this.done;

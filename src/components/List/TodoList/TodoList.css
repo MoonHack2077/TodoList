@@ -9,6 +9,9 @@
 .TodoList-container{
   width: 100%;
   outline: 1px solid blue;
+}
+
+.TodoList-container-xd{
   display: grid;
   /* grid-template-columns: repeat(3,100px) ;
   margin: 100px 0px; */
@@ -26,6 +29,9 @@
   padding-bottom: 30px;
 }
 
+.TodoItem-container{
+  text-align: center
+}
 .NavList{
   display: grid;
   /* grid-template-columns: repeat(3,100px) ;
