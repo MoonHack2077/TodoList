@@ -7,14 +7,25 @@
 .xd{
   display: grid;
   place-items: center;
-  padding: 40px;
+  margin: 40px;
+  outline: 1px solid red;
 }
 
 .Details{
-  display: flex;
+  /* display: flex; */
+
+
+  display:grid;
+  grid-template-columns: repeat(3,max-content);
+  grid-auto-rows: min-content;
+
+
+  width: 100%;
   gap: 40px;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: flex-start; */
+  /* justify-content: space-between; */
+  justify-content: space-evenly;
   align-items: center;
   padding-bottom: 30px;
   border-bottom: 1px solid #fff;

@@ -1,13 +1,12 @@
-import React from 'react'
-import './Detail.css'
+import React from 'react';
+import { TodoSearch } from '../../NavBar/TodoSearch/TodoSearch.jsx';
+import './Detail.css';
 
 function Detail({ info, placeholder }){
-    const [ item,setItem ] = React.useState('');
-
     return(
         <div className='Detail'>
             <label className='Detail-label' htmlFor={info}>{info}</label>
-            <input className='input-detail' placeholder={placeholder} id={info} value={item} onChange={e =>setItem(e.target.value)}/>
+            <TodoSearch className='TodoSearch' placeholder={placeholder} info={info}/>
         </div>
     )
 }

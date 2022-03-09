@@ -12,7 +12,7 @@ function NavBar(){
                 <Checkboxes info='All'/>
                 <Checkboxes info='Done'/>
                 <Checkboxes info='Uncompleted'/>
-                <TodoSearch/>
+                <TodoSearch placeholder='Search a Todo'/>
             </section>
         </nav>
     )

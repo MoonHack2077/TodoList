@@ -1,7 +1,17 @@
 .TodoList{
-    list-style-type: none;
-    overflow-y: auto; 
-    max-height: 400px;
-    padding: 30px;
-    /* --webkit-overflow-scrolling: 2em; */
-  }
+  list-style-type: none;
+  overflow-y: auto; 
+  max-height: 400px;
+  /* padding: 30px; */
+  /* --webkit-overflow-scrolling: 2em; */
+}
+
+.TodoList-container{
+  outline: 1px solid blue;
+}
+
+.NavList{
+  display: grid;
+  grid-template-columns: repeat(3,100px) ;
+  margin: 100px 0px;
+}

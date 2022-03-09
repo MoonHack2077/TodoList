@@ -1,5 +1,0 @@
-.NavList{
-    display: grid;
-    grid-template-columns: repeat(3,100px) ;
-    margin: 100px 0px;
-}
