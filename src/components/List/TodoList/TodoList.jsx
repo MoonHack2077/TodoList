@@ -23,13 +23,13 @@ const tasks = [
 // console.log( tasks.findIndex(idx => idx.id===0) )
 function TodoList(){
     return (
-        <table class="table table-striped" id="table">
+        <table className="table" id="table">
           <thead>
             <tr>
               <th scope="col">Title</th>
               <th scope="col">Description</th>
               <th scope="col">
-                <div class="d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
                   Completed
                 </div>
               </th>
@@ -44,33 +44,37 @@ function TodoList(){
               <td>
                 Watch Javascript tutorials on Youtube
               </td>
-              <td class="text-center">
+              <td className="text-center">
                 <input type="checkbox"/>
               </td>
-              <td class="text-right">
-                <button class="btn btn-primary mb-1">
-                  <i class="fa fa-pencil"></i>
+              <td className="text-right">
+                <button className="btn btn-primary mb-1">
+                  <i className="fa fa-pencil"></i>
                 </button>
-                <button class="btn btn-danger mb-1 ml-1">
-                  <i class="fa fa-trash"></i>
+                <button className="btn btn-danger mb-1 ml-1">
+                  <i className="fa fa-trash"></i>
                 </button>
               </td>
             </tr>
+            <TodoItem id='1' title='test title' description='test description'/>
+            <TodoItem id='1' title='test title' description='test description'/>
+            <TodoItem id='1' title='test title' description='test description'/>
+            <TodoItem id='1' title='test title' description='test description'/>
           </tbody>
         </table>
 
     )
-        {/* <section className='TodoList-container'>
-        //         <ul className='TodoList-container-xd' >
-        //             <li className='indicators' key='indicators'>
-        //                 <span className='indicator'>Title</span>
-        //                 <span className='indicator'>Description</span>
-        //                 <span className='indicator'>Completed</span>
+        {/* <section classNameName='TodoList-container'>
+        //         <ul classNameName='TodoList-container-xd' >
+        //             <li classNameName='indicators' key='indicators'>
+        //                 <span classNameName='indicator'>Title</span>
+        //                 <span classNameName='indicator'>Description</span>
+        //                 <span classNameName='indicator'>Completed</span>
         //             </li>
-        //             {tasks.map( task => <li className='todo' id={task.id}><TodoItem key={task.id} title={task.title} description={task.description}/></li> )}
+        //             {tasks.map( task => <li classNameName='todo' id={task.id}><TodoItem key={task.id} title={task.title} description={task.description}/></li> )}
         //         </ul>
                 
-        //     {<ul className='TodoList'>
+        //     {<ul classNameName='TodoList'>
         //         {tasks.map( task => <TodoItem id={task.id} key={task.id} text={task.name}  /> )}
         //     </ul> }
         // </section> */}

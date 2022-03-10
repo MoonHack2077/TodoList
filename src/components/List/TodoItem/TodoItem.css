@@ -1,40 +1,5 @@
 /* .TodoItem{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    width: 250px;
-    padding: 10px 20px;
-    border-radius: 40px;
-    outline: 2px solid #000;
-    margin-bottom: 20px;
-     background-image: linear-gradient(to right, #ccf, #9ff ); 
-    background-color: #eee;
-    font-size: 20px;
-    word-break: break-word;
-  } */
-
-
-  .TodoItem{
-    display: grid;
-    /* grid-template-columns: repeat(3,100px) ;
-    margin: 100px 0px; */
-  
-    grid-template-columns: repeat(4,auto);
-    /* grid-auto-rows: min-content; */
-  
-    color: #fff;
-    gap: 40px;
-    flex-wrap: wrap;
-    /* align-items: flex-start; */
-    /* justify-content: space-between; */
-    /* justify-content: space-around; */
-    /* justify-self: center; */
-    /* justify-content: space-evenly; */
-    /* justify-content: center; */
-    align-self: center;
-    padding-bottom: 30px;
-    text-align: center;
-  }
+  color: #fff;
+  width: 100%; 
+}*/
 
