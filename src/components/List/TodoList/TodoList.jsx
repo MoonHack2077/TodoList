@@ -4,10 +4,6 @@ import { TodoItem } from '../TodoItem/TodoItem.jsx';
 // import { NavList } from '../NavList/NavList.jsx';
 import { Task } from '../../../Task';
 
-// function randomId(){
-//     return Math.floor(Math.random() * 200);
-// }
-
 let id = 1;
 // const task={
 //     id: null,
@@ -25,18 +21,18 @@ const tasks = [
 ]
 // console.log( tasks.findIndex(idx => idx.id===0) )
 function TodoList(){
+  const [todos, setTodos] = React.useState(tasks)
     return (
         <table className="table" id="table">
           <thead>
             <tr>
-              <th scope="col">Title</th>
-              <th scope="col">Description</th>
-              <th scope="col">
+              <th >Title</th>
+              <th >Description</th>
+              <th >
                 <div className="d-flex justify-content-center">
                   Completed
                 </div>
               </th>
-              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
@@ -59,25 +55,11 @@ function TodoList(){
                 </button>
               </td>
             </tr>
-            {tasks.map(task=><TodoItem id={task.id} title={task.title} description={task.description}/>)}
+            {todos.map(task=><TodoItem key={task.id} id={task.id} title={task.title} description={task.description}/>)}
           </tbody>
         </table>
 
     )
-        {/* <section classNameName='TodoList-container'>
-        //         <ul classNameName='TodoList-container-xd' >
-        //             <li classNameName='indicators' key='indicators'>
-        //                 <span classNameName='indicator'>Title</span>
-        //                 <span classNameName='indicator'>Description</span>
-        //                 <span classNameName='indicator'>Completed</span>
-        //             </li>
-        //             {tasks.map( task => <li classNameName='todo' id={task.id}><TodoItem key={task.id} title={task.title} description={task.description}/></li> )}
-        //         </ul>
-                
-        //     {<ul classNameName='TodoList'>
-        //         {tasks.map( task => <TodoItem id={task.id} key={task.id} text={task.name}  /> )}
-        //     </ul> }
-        // </section> */}
     
 }
 
