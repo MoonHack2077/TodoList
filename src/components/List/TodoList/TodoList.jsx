@@ -18,6 +18,9 @@ let id = 1;
 const tasks = [
     new Task({title: 'Learn React', description: 'xs', id: id++}),
     new Task({title: 'Learn React', description: 'xs', id: id++}),
+    new Task({title: 'Learn React', description: 'xs', id: id++}),
+    new Task({title: 'Learn React', description: 'xs', id: id++}),
+    new Task({title: 'Learn React', description: 'xs', id: id++}),
     new Task({title: 'Learn React', description: 'xs', id: id++})
 ]
 // console.log( tasks.findIndex(idx => idx.id===0) )
@@ -38,10 +41,10 @@ function TodoList(){
           </thead>
           <tbody>
             <tr>
-              <td>
+              <td className="text-center">
                 Learn JS
               </td>
-              <td>
+              <td className="text-center">
                 Watch Javascript tutorials on Youtube
               </td>
               <td className="text-center">
@@ -56,10 +59,7 @@ function TodoList(){
                 </button>
               </td>
             </tr>
-            <TodoItem id='1' title='test title' description='test description'/>
-            <TodoItem id='1' title='test title' description='test description'/>
-            <TodoItem id='1' title='test title' description='test description'/>
-            <TodoItem id='1' title='test title' description='test description'/>
+            {tasks.map(task=><TodoItem id={task.id} title={task.title} description={task.description}/>)}
           </tbody>
         </table>
 

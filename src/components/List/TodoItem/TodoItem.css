@@ -1,5 +1,30 @@
-/* .TodoItem{
+.TodoItem{
   color: #fff;
   width: 100%; 
-}*/
+  margin: 15px;
+}
+table{
+  border-spacing: 10px;
+}
+.icon{
+  border: none;
+  outline: none;
+  padding: var(--input-padding);
+  color: #ddd;
+  margin-bottom: 1px;
+  border-radius: 6px;
+  margin: 0 3px 0
+}
+.check{
+  background-color: var(--edit-todo)
+}
+.trash{
+  background-color: var(--delete-todo)
+}
 
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}

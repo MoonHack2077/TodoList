@@ -30,19 +30,19 @@ function TodoItem({id, title, description}){
         // </div>
 
         <React.Fragment>
-            <tr id={id} className='TodoItem'>
-              <td>
+            <tr id={id} className={`TodoItem ${id%2!==0 && 'gray'}`}>
+              <td className="text-center">
                 {title}
               </td>
-              <td>
+              <td className="text-center">
                 {description}
               </td>
               <td className="text-center">
                 <input type="checkbox"/>
               </td>
               <td class="text-right">
-                <button onClick={remove}><FontAwesomeIcon icon={faPencilAlt} /></button>
-                <button onClick={edit}><FontAwesomeIcon icon={faTrash} className='icon trash'/></button>
+                <button className='icon check' onClick={remove}><FontAwesomeIcon icon={faPencilAlt} /></button>
+                <button className='icon trash' onClick={edit}><FontAwesomeIcon icon={faTrash} /></button>
               </td>
             </tr>
         </React.Fragment>
