@@ -3,26 +3,29 @@ import { TodoList } from '../components/List/TodoList/TodoList.jsx'
 import { CreateTodoButton } from '../components/Create/Button/CreateTodoButton.jsx'
 import { NavBar } from '../components/NavBar/Nav/NavBar.jsx'
 import { Detail } from '../components/Create/Detail/Detail.jsx'
-import { Task } from '../Task';
+// import { Task } from '../Task';
 import React from 'react'
 import './App.css'
 
 let id =1;
-const tasks = [
-  new Task({title: 'Learn React', description: 'xs', id: id++}),
-  new Task({title: 'Learn React', description: 'xs', id: id++}),
-  new Task({title: 'Learn React', description: 'xs', id: id++}),
-  new Task({title: 'Learn React', description: 'xs', id: id++}),
-  new Task({title: 'Learn React', description: 'xs', id: id++}),
-  new Task({title: 'Learn React', description: 'xs', id: id++})
-]
+const tasks = [];
 
 function App() {
   const [title,setTitle] = React.useState('');
   const [description,setDescription] = React.useState('');
   const [todos,setTodos] = React.useState(tasks);
 
-  const handle = () => setTodos([...todos, new Task({title, description, id: id++})])
+  const handle = () => {
+    if(!title || !description) return
+    const task = {title, description, done:false, id: id++};
+    console.log(task);
+    setTodos([...todos, task])
+  }
+
+  const check = (task) => {
+    task.done= !task.done
+    console.log(task);
+  }  
 
   return (
     <div className='App'>
@@ -33,7 +36,7 @@ function App() {
           <Detail value={description} onChange={e=>setDescription(e.target.value)} info='Description' placeholder='Add a Description...'/>
           <CreateTodoButton onClick={handle}/>
         </div>
-        <TodoList tasks={todos}/>
+        <TodoList check={check} tasks={todos}/>
       </section>
     </div>
   );

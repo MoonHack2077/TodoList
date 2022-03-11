@@ -13,7 +13,7 @@ import { TodoItem } from '../TodoItem/TodoItem.jsx';
 // }
 
 // console.log( tasks.findIndex(idx => idx.id===0) )
-function TodoList({tasks=[]}){
+function TodoList({tasks=[], check}){
     return (
         <table className="table" id="table">
           <thead>
@@ -27,28 +27,9 @@ function TodoList({tasks=[]}){
               </th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td className="text-center">
-                Learn JS
-              </td>
-              <td className="text-center">
-                Watch Javascript tutorials on Youtube
-              </td>
-              <td className="text-center">
-                <input type="checkbox"/>
-              </td>
-              <td className="text-right">
-                <button className="btn btn-primary mb-1">
-                  <i className="fa fa-pencil"></i>
-                </button>
-                <button className="btn btn-danger mb-1 ml-1">
-                  <i className="fa fa-trash"></i>
-                </button>
-              </td>
-            </tr>
+          <tbody>                     
 
-            {tasks.map(task=><TodoItem key={task.id} id={task.id} title={task.title} description={task.description}/>)}
+            {tasks.map(task=><TodoItem key={task.id} id={task.id} title={task.title} description={task.description} check={check}/>)}
 
           </tbody>
         </table>
