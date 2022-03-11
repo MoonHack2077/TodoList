@@ -2,26 +2,18 @@ import React from 'react';
 import './TodoList.css';
 import { TodoItem } from '../TodoItem/TodoItem.jsx';
 // import { NavList } from '../NavList/NavList.jsx';
-import { Task } from '../../../Task';
 
-let id = 1;
+
+
 // const task={
 //     id: null,
 //     title:null,
 //     description: null,
 //     completed: null
 // }
-const tasks = [
-    new Task({title: 'Learn React', description: 'xs', id: id++}),
-    new Task({title: 'Learn React', description: 'xs', id: id++}),
-    new Task({title: 'Learn React', description: 'xs', id: id++}),
-    new Task({title: 'Learn React', description: 'xs', id: id++}),
-    new Task({title: 'Learn React', description: 'xs', id: id++}),
-    new Task({title: 'Learn React', description: 'xs', id: id++})
-]
+
 // console.log( tasks.findIndex(idx => idx.id===0) )
-function TodoList(){
-  const [todos, setTodos] = React.useState(tasks)
+function TodoList({tasks=[]}){
     return (
         <table className="table" id="table">
           <thead>
@@ -55,12 +47,13 @@ function TodoList(){
                 </button>
               </td>
             </tr>
-            {todos.map(task=><TodoItem key={task.id} id={task.id} title={task.title} description={task.description}/>)}
+
+            {tasks.map(task=><TodoItem key={task.id} id={task.id} title={task.title} description={task.description}/>)}
+
           </tbody>
         </table>
-
     )
     
 }
 
-export { TodoList, tasks }
+export { TodoList }
