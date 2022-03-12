@@ -8,7 +8,7 @@ function TodoItem({id, title, description, onChange,onClick}){
 
     return (
         <React.Fragment>
-            <tr id={id} className={`TodoItem ${id%2!==0 && 'gray'}`}>
+            <tr id={id} className='TodoItem'>
               <td className="text-center">
                 {title}
               </td>

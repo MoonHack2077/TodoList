@@ -11,6 +11,9 @@
   border-radius: 6px;
   margin: 0 3px 0
 }
+.icon:hover{
+  filter:brigthness(100%)
+}
 .check{
   background-color: var(--edit-todo)
 }

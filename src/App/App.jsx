@@ -2,10 +2,11 @@ import { TodoList } from '../components/List/TodoList/TodoList.jsx';
 import { CreateTodoButton } from '../components/Create/Button/CreateTodoButton.jsx';
 import { NavBar } from '../components/NavBar/Nav/NavBar.jsx';
 import { Detail } from '../components/Create/Detail/Detail.jsx';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 let id =1;
+const KEY = 'TODOS';
 
 function App() {
   const [title,setTitle] = useState('');
@@ -29,11 +30,18 @@ function App() {
   
   const remove = task =>{
     const index = find(task);
-    console.log(index);
     todos.splice(index,1);
     setTodos([...todos]);
-    id=1;
   }
+
+  useEffect(()=>{
+    const storedTodos = JSON.parse(localStorage.getItem(KEY));
+    if (storedTodos) setTodos(storedTodos);
+  },[]);
+
+  useEffect(()=>{
+    localStorage.setItem(KEY, JSON.stringify(todos))
+  },[todos]);
 
   return (
     <div className='App'>
