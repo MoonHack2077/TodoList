@@ -9,6 +9,4 @@ function CreateTodoButton({onClick}){
     )
 }
 
-
-
 export { CreateTodoButton }

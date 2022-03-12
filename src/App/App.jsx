@@ -2,16 +2,15 @@ import { TodoList } from '../components/List/TodoList/TodoList.jsx';
 import { CreateTodoButton } from '../components/Create/Button/CreateTodoButton.jsx';
 import { NavBar } from '../components/NavBar/Nav/NavBar.jsx';
 import { Detail } from '../components/Create/Detail/Detail.jsx';
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-
 
 let id =1;
 
 function App() {
-  const [title,setTitle] = React.useState('');
-  const [description,setDescription] = React.useState('');
-  const [todos,setTodos] = React.useState([]);
+  const [title,setTitle] = useState('');
+  const [description,setDescription] = useState('');
+  const [todos,setTodos] = useState([]);
 
   const handle = () => {
     if(!title || !description) return
