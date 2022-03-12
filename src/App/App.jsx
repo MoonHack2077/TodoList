@@ -12,6 +12,7 @@ function App() {
   const [title,setTitle] = useState('');
   const [description,setDescription] = useState('');
   const [todos,setTodos] = useState([]);
+  const [done,setDone] = useState(false);
 
   useEffect(()=>{
     const storedTodos = JSON.parse(localStorage.getItem(KEY));
@@ -24,7 +25,7 @@ function App() {
 
   const handle = () => {
     if(!title || !description) return
-    const task = {title, description, done: false, id: id++};
+    const task = {title, description, done, id: id++};
     setTodos([...todos, task]);
     setTitle('');
     setDescription('');
@@ -32,14 +33,14 @@ function App() {
 
   const find = id => todos.findIndex(item => item.id===id);
 
-  const check = task => {
-    const index = find(task);
+  const check = id => {
+    const index = find(id);
     todos[index].done = !todos[index].done;
-    console.log(todos[index]);
+    setDone(todos[index].done)
   }
   
-  const remove = task =>{
-    const index = find(task);
+  const remove = id =>{
+    const index = find(id);
     todos.splice(index,1);
     setTodos([...todos]);
   }

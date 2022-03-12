@@ -20,7 +20,8 @@ function TodoList({todos=[], onChange, onClick}){
           <tbody>                     
 
             {todos.map(todo=>
-            <TodoItem key={todo.id} 
+            <TodoItem
+              key={todo.id}
               id={todo.id} 
               title={todo.title}
               description={todo.description} 

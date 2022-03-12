@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 function TodoItem({id, title, description,done, onChange,onClick}){
-    const edit = () => console.log('edit xd');
-    // const [check,setCheck] = React.useState(done);
+    const edit = () => console.log(done);
 
     return (
         <React.Fragment>
