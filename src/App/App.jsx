@@ -5,13 +5,22 @@ import { Detail } from '../components/Create/Detail/Detail.jsx';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-let id =1;
+let id = 1;
 const KEY = 'TODOS';
 
 function App() {
   const [title,setTitle] = useState('');
   const [description,setDescription] = useState('');
   const [todos,setTodos] = useState([]);
+
+  useEffect(()=>{
+    const storedTodos = JSON.parse(localStorage.getItem(KEY));
+    if (storedTodos) setTodos(storedTodos);
+  },[]);
+
+  useEffect(()=>{
+    localStorage.setItem(KEY, JSON.stringify(todos))
+  },[todos]);
 
   const handle = () => {
     if(!title || !description) return
@@ -26,6 +35,7 @@ function App() {
   const check = task => {
     const index = find(task);
     todos[index].done = !todos[index].done;
+    console.log(todos[index]);
   }
   
   const remove = task =>{
@@ -34,25 +44,38 @@ function App() {
     setTodos([...todos]);
   }
 
-  useEffect(()=>{
-    const storedTodos = JSON.parse(localStorage.getItem(KEY));
-    if (storedTodos) setTodos(storedTodos);
-  },[]);
-
-  useEffect(()=>{
-    localStorage.setItem(KEY, JSON.stringify(todos))
-  },[todos]);
 
   return (
     <div className='App'>
+
       <NavBar/>
+
       <section className='xd'>
         <div className='Details'>
-          <Detail value={title} onChange={e=>setTitle(e.target.value)} info='Title' placeholder='Add a Title...'/>
-          <Detail value={description} onChange={e=>setDescription(e.target.value)} info='Description' placeholder='Add a Description...'/>
+
+          <Detail 
+            value={title} 
+            onChange={e=>setTitle(e.target.value)} 
+            info='Title' 
+            placeholder='Add a Title...'
+          />
+
+          <Detail 
+            value={description} 
+            onChange={e=>setDescription(e.target.value)} 
+            info='Description' 
+            placeholder='Add a Description...'
+          />
+
           <CreateTodoButton onClick={handle}/>
+
         </div>
-        <TodoList onClick={remove} onChange={check} tasks={todos}/>
+
+        <TodoList 
+          onClick={remove} 
+          onChange={check} 
+          todos={todos}
+        />
       </section>
     </div>
   );

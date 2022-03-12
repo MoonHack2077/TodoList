@@ -3,7 +3,7 @@ import './TodoList.css';
 import { TodoItem } from '../TodoItem/TodoItem.jsx';
 
 
-function TodoList({tasks=[], onChange, onClick}){
+function TodoList({todos=[], onChange, onClick}){
     return (
         <table className="table" id="table">
           <thead>
@@ -11,7 +11,7 @@ function TodoList({tasks=[], onChange, onClick}){
               <th >Title</th>
               <th >Description</th>
               <th >
-                <div className="d-flex justify-content-center">
+                <div >
                   Completed
                 </div>
               </th>
@@ -19,11 +19,12 @@ function TodoList({tasks=[], onChange, onClick}){
           </thead>
           <tbody>                     
 
-            {tasks.map(task=>
-            <TodoItem key={task.id} 
-              id={task.id} 
-              title={task.title}
-              description={task.description} 
+            {todos.map(todo=>
+            <TodoItem key={todo.id} 
+              id={todo.id} 
+              title={todo.title}
+              description={todo.description} 
+              done={todo.done}
               onChange={onChange}
               onClick={onClick}
              />)}

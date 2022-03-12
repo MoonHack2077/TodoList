@@ -20,7 +20,7 @@
 .trash{
   background-color: var(--delete-todo)
 }
-.text-center{
+tr td{
   text-align: center;
 }
 .text-right{

@@ -3,24 +3,35 @@ import './TodoItem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
-function TodoItem({id, title, description, onChange,onClick}){
+function TodoItem({id, title, description,done, onChange,onClick}){
     const edit = () => console.log('edit xd');
+    // const [check,setCheck] = React.useState(done);
 
     return (
         <React.Fragment>
             <tr id={id} className='TodoItem'>
-              <td className="text-center">
+              <td >
                 {title}
               </td>
-              <td className="text-center">
+              <td >
                 {description}
               </td>
-              <td className="text-center">
-                <input type="checkbox" onChange={()=>onChange(id)}/>
+              <td >
+                <input type="checkbox" checked={done} onChange={() => onChange(id)}/>
               </td>
-              <td className="text-center">
-                <button className='icon check' onClick={edit}><FontAwesomeIcon icon={faPencilAlt} /></button>
-                <button className='icon trash' onClick={()=>onClick(id)}><FontAwesomeIcon icon={faTrash} /></button>
+              <td >
+              
+                <button 
+                  className='icon check' 
+                  onClick={edit}
+                  ><FontAwesomeIcon icon={faPencilAlt}/>
+                </button>
+                <button 
+                  className='icon trash' 
+                  onClick={() => onClick(id)}
+                  ><FontAwesomeIcon icon={faTrash}/>
+                </button>
+
               </td>
             </tr>
         </React.Fragment>
