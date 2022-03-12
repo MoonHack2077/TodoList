@@ -11,21 +11,24 @@ let id =1;
 const tasks = [];
 
 function App() {
-  const [title,setTitle] = React.useState('');
-  const [description,setDescription] = React.useState('');
+  let [title,setTitle] = React.useState('');
+  let [description,setDescription] = React.useState('');
   const [todos,setTodos] = React.useState(tasks);
 
   const handle = () => {
     if(!title || !description) return
     const task = {title, description, done:false, id: id++};
-    console.log(task);
-    setTodos([...todos, task])
+    setTodos([...todos, task]);
+    setTitle('')
+    setDescription('')
   }
 
-  const check = (task) => {
-    task.done= !task.done
-    console.log(task);
-  }  
+  const check = task => {
+    const index = todos.findIndex(item => item.id===task);
+    todos[index].done = !todos[index].done
+  }
+  
+  
 
   return (
     <div className='App'>
@@ -36,7 +39,7 @@ function App() {
           <Detail value={description} onChange={e=>setDescription(e.target.value)} info='Description' placeholder='Add a Description...'/>
           <CreateTodoButton onClick={handle}/>
         </div>
-        <TodoList check={check} tasks={todos}/>
+        <TodoList onClick={check} tasks={todos}/>
       </section>
     </div>
   );

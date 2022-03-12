@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
 
-function TodoItem({id, title, description, ckeck}){
+function TodoItem({id, title, description, onClick}){
     const remove = () => console.log('remove .-.');
     const edit = () => console.log('edit xd');
 
@@ -19,11 +19,11 @@ function TodoItem({id, title, description, ckeck}){
                 {description}
               </td>
               <td className="text-center">
-                <input type="checkbox" onClick={ckeck}/>
+                <input type="checkbox" onClick={()=>onClick(id)}/>
               </td>
               <td className="text-center">
-                <button className='icon check' onClick={remove}><FontAwesomeIcon icon={faPencilAlt} /></button>
-                <button className='icon trash' onClick={edit}><FontAwesomeIcon icon={faTrash} /></button>
+                <button className='icon check' onClick={edit}><FontAwesomeIcon icon={faPencilAlt} /></button>
+                <button className='icon trash' onClick={remove}><FontAwesomeIcon icon={faTrash} /></button>
               </td>
             </tr>
         </React.Fragment>
