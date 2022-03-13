@@ -24,6 +24,7 @@ function TodoList({todos=[], toggleCheck, onClick}){
               title = { todo.title }
               description = {todo.description } 
               done = { todo.done }
+              hide = { todo.hide }
               toggleCheck = { toggleCheck }
               onClick = { onClick }
              />)}

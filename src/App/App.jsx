@@ -12,12 +12,13 @@ function App() {
   const [ title , setTitle ] = useState('');
   const [ description , setDescription ] = useState('');
   const [ todos , setTodos ] = useState( JSON.parse(localStorage.getItem(KEY)) );
+  const [ search , setSearch ] = useState('');
 
   useEffect( () => localStorage.setItem( KEY, JSON.stringify(todos) ) , [todos]);
 
   const handle = () => {
     if(!title || !description) return
-    const todo = { title, description, done: false, id: uuid() };
+    const todo = { title, description, done: false, id: uuid(), hide: false };
     setTodos([...todos, todo]);
   }
 
@@ -35,11 +36,26 @@ function App() {
     setTodos([...todos]);
   }
 
+  const filters = e =>{
+    setSearch(e.target.value);
+    console.log(search);
+    for(const todo of todos){
+      if(todo.title.includes(search) || todo.description.includes(search)){
+        todo.hide = false;
+      }else{
+        todo.hide = true;
+      }
+      setTodos([...todos]);
+    }
+  }
 
   return (
     <div className = 'App'>
 
-      <NavBar/>
+      <NavBar 
+        value={ search } 
+        onChange={ () => filters }
+      />
 
       <section className = 'container'>
         <div className = 'Details'>

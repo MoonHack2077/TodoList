@@ -3,7 +3,7 @@ import {Checkboxes} from '../Checkboxes/Checkboxes'
 import { TodoSearch } from '../TodoSearch/TodoSearch.jsx'
 import './NavBar.css'
 
-function NavBar(){
+function NavBar({ onChange, value }){
     return(
         <nav className='navBar'>
             <span className='navBar-icon'>TodoList.jsx</span>
@@ -12,7 +12,7 @@ function NavBar(){
                 <Checkboxes info='All'/>
                 <Checkboxes info='Done'/>
                 <Checkboxes info='Uncompleted'/>
-                <TodoSearch placeholder='Search a Todo'/>
+                <TodoSearch value={value} onChange= {onChange} placeholder='Search a Todo'/>
             </section>
         </nav>
     )

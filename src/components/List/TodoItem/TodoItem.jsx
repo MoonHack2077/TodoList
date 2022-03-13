@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 
-function TodoItem({ id, title, description, done, toggleCheck, onClick }){
+function TodoItem({ id, title, description, done, hide, toggleCheck, onClick }){
     const edit = () => console.log('edit xd');
 
     return (
         <React.Fragment>
-            <tr id={ id } className='TodoItem'>
+            <tr id={ id } className={`TodoItem ${hide && 'none'}`}>
               <td >
                 { title }
               </td>
