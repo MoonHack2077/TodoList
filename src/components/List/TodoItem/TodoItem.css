@@ -12,7 +12,7 @@
   margin: 0 3px 0
 }
 .icon:hover{
-  filter:brigthness(100%)
+  filter: brightness(.5);
 }
 .check{
   background-color: var(--edit-todo)

@@ -8,12 +8,10 @@ function TodoList({todos=[], toggleCheck, onClick}){
         <table className="table" id="table">
           <thead>
             <tr>
-              <th >Title</th>
-              <th >Description</th>
+              <th >Title </th>
+              <th >Description </th>
               <th >
-                <div >
-                  Completed
-                </div>
+                <div > Completed  </div>
               </th>
             </tr>
           </thead>
@@ -21,19 +19,18 @@ function TodoList({todos=[], toggleCheck, onClick}){
 
             {todos.map(todo=>
             <TodoItem
-              key={todo.id}
-              id={todo.id} 
-              title={todo.title}
-              description={todo.description} 
-              done={todo.done}
-              toggleCheck={toggleCheck}
-              onClick={onClick}
+              key = { todo.id }
+              id = { todo.id }  
+              title = { todo.title }
+              description = {todo.description } 
+              done = { todo.done }
+              toggleCheck = { toggleCheck }
+              onClick = { onClick }
              />)}
 
           </tbody>
         </table>
-    )
-    
+    )   
 }
 
 export { TodoList }
