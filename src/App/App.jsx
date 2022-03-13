@@ -2,30 +2,31 @@ import { TodoList } from '../components/List/TodoList/TodoList.jsx';
 import { CreateTodoButton } from '../components/Create/Button/CreateTodoButton.jsx';
 import { NavBar } from '../components/NavBar/Nav/NavBar.jsx';
 import { Detail } from '../components/Create/Detail/Detail.jsx';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { v4 as uuid } from 'uuid';
 import './App.css';
 
-let id = 1;
 const KEY = 'TODOS';
 
 function App() {
   const [title,setTitle] = useState('');
   const [description,setDescription] = useState('');
-  const [todos,setTodos] = useState([]);
+  const [todos,setTodos] = useState(JSON.parse(localStorage.getItem(KEY)));
+
+  // useEffect(()=>{
+  //   const storedTodos = JSON.parse(localStorage.getItem(KEY));
+  //   if (storedTodos) {
+  //     setTodos(storedTodos);
+  //   }
+  // },[]);
 
   useEffect(()=>{
-    const storedTodos = JSON.parse(localStorage.getItem(KEY));
-    if (storedTodos) {
-      setTodos(storedTodos);
-    }
-    id = storedTodos.length+1;
-  },[]);
-
-  const save = () => localStorage.setItem(KEY, JSON.stringify(todos))
+    localStorage.setItem(KEY, JSON.stringify(todos))
+  },[todos]);
 
   const handle = () => {
     if(!title || !description) return
-    const task = {title, description, done:false, id: id++};
+    const task = {title, description, done:false, id: uuid()};
     setTodos([...todos, task]);
     // setTitle('');
     // setDescription('');
@@ -36,8 +37,7 @@ function App() {
   const toggleCheck = id => {
     const index = find(id);
     todos[index].done = !todos[index].done;
-    console.log(todos[index]);
-    save();
+    setTodos([...todos]);
   }
   
   const remove = id =>{
