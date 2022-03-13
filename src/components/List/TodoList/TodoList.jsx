@@ -3,7 +3,7 @@ import './TodoList.css';
 import { TodoItem } from '../TodoItem/TodoItem.jsx';
 
 
-function TodoList({todos=[], onChange, onClick}){
+function TodoList({todos=[], toggleCheck, onClick}){
     return (
         <table className="table" id="table">
           <thead>
@@ -26,7 +26,7 @@ function TodoList({todos=[], onChange, onClick}){
               title={todo.title}
               description={todo.description} 
               done={todo.done}
-              onChange={onChange}
+              toggleCheck={toggleCheck}
               onClick={onClick}
              />)}
 

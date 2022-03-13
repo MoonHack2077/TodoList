@@ -3,7 +3,7 @@ import './TodoItem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
-function TodoItem({id, title, description,done, onChange,onClick}){
+function TodoItem({id, title, description,done, toggleCheck,onClick}){
     const edit = () => console.log(done);
 
     return (
@@ -16,7 +16,7 @@ function TodoItem({id, title, description,done, onChange,onClick}){
                 {description}
               </td>
               <td >
-                <input type="checkbox" checked={done} onChange={() => onChange(id)}/>
+                <input type="checkbox" checked={done} onChange={() => toggleCheck(id)}/>
               </td>
               <td >
               

@@ -12,31 +12,32 @@ function App() {
   const [title,setTitle] = useState('');
   const [description,setDescription] = useState('');
   const [todos,setTodos] = useState([]);
-  const [done,setDone] = useState(false);
 
   useEffect(()=>{
     const storedTodos = JSON.parse(localStorage.getItem(KEY));
-    if (storedTodos) setTodos(storedTodos);
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+    id = storedTodos.length+1;
   },[]);
 
-  useEffect(()=>{
-    localStorage.setItem(KEY, JSON.stringify(todos))
-  },[todos]);
+  const save = () => localStorage.setItem(KEY, JSON.stringify(todos))
 
   const handle = () => {
     if(!title || !description) return
-    const task = {title, description, done, id: id++};
+    const task = {title, description, done:false, id: id++};
     setTodos([...todos, task]);
-    setTitle('');
-    setDescription('');
+    // setTitle('');
+    // setDescription('');
   }
 
   const find = id => todos.findIndex(item => item.id===id);
 
-  const check = id => {
+  const toggleCheck = id => {
     const index = find(id);
     todos[index].done = !todos[index].done;
-    setDone(todos[index].done)
+    console.log(todos[index]);
+    save();
   }
   
   const remove = id =>{
@@ -74,7 +75,7 @@ function App() {
 
         <TodoList 
           onClick={remove} 
-          onChange={check} 
+          toggleCheck={toggleCheck} 
           todos={todos}
         />
       </section>
