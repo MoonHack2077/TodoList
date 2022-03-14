@@ -1,18 +1,18 @@
 import React from 'react';
 import {Checkboxes} from '../Checkboxes/Checkboxes'
-import { TodoSearch } from '../TodoSearch/TodoSearch.jsx'
+// import { TodoSearch } from '../TodoSearch/TodoSearch.jsx'
 import './NavBar.css'
 
-function NavBar({ onChange, value }){
+function NavBar({onClick, onChange, value }){
     return(
         <nav className='navBar'>
             <span className='navBar-icon'>TodoList.jsx</span>
             <section className='filters-container'>
                 <span className='filters'>Filters</span>
-                <Checkboxes info='All'/>
-                <Checkboxes info='Done'/>
-                <Checkboxes info='Uncompleted'/>
-                <TodoSearch value={value} onChange= {onChange} placeholder='Search a Todo'/>
+                <Checkboxes onClick={onClick} info='All'/>
+                <Checkboxes onClick={onClick} info='Done'/>
+                <Checkboxes onClick={onClick} info='Uncompleted'/>
+                <input className='TodoSearch' type='text' value={value} onChange={onChange} placeholder='Search a Todo'/>
             </section>
         </nav>
     )

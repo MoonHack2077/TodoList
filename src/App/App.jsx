@@ -34,27 +34,38 @@ function App() {
     const index = findTodo(id);
     todos.splice( index , 1 );
     setTodos([...todos]);
-  }
+  };
 
-  const filters = e =>{
-    setSearch(e.target.value);
-    console.log(search);
+  const filters = (e) =>{
+
+    if(search==='') todos.map( todo => todo.hide===false );
+
     for(const todo of todos){
-      if(todo.title.includes(search) || todo.description.includes(search)){
+
+      const hasSearched = todo.title.includes(search) || todo.description.includes(search);
+
+      if( (hasSearched) && (e.checked && todo.done)){
         todo.hide = false;
-      }else{
+      }else if( (hasSearched) && (e.checked && !todo.done)){
+        todo.hide = false;
+      }else if( (hasSearched) || (e.checked)){
+        todo.hide = false;
+      }
+      else{
         todo.hide = true;
       }
       setTodos([...todos]);
     }
   }
 
+
   return (
     <div className = 'App'>
 
       <NavBar 
         value={ search } 
-        onChange={ () => filters }
+        onChange={ e => setSearch(e.target.value) }
+        onClick = { e => filters(e) }
       />
 
       <section className = 'container'>
