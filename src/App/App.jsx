@@ -36,19 +36,17 @@ function App() {
     setTodos([...todos]);
   };
 
-  const filters = (e) =>{
-
-    if(search==='') todos.map( todo => todo.hide===false );
+  const filters = target =>{
 
     for(const todo of todos){
-
+      todo.hide=false;
       const hasSearched = todo.title.includes(search) || todo.description.includes(search);
 
-      if( (hasSearched) && (e.checked && todo.done)){
+      if( (hasSearched) && (target.id==='Done' && target.checked && todo.done)){
         todo.hide = false;
-      }else if( (hasSearched) && (e.checked && !todo.done)){
+      }else if( (hasSearched) && (target.id==='Uncompleted' && target.checked && !todo.done)){
         todo.hide = false;
-      }else if( (hasSearched) || (e.checked)){
+      }else if( (hasSearched) || (target.id==='All' && target.checked)){
         todo.hide = false;
       }
       else{
@@ -56,6 +54,7 @@ function App() {
       }
       setTodos([...todos]);
     }
+
   }
 
 
