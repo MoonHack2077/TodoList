@@ -18,7 +18,7 @@ function App() {
 
   const handle = () => {
     if(!title || !description) return
-    const todo = { title, description, done: false, id: uuid(), hide: false };
+    const todo = { title, description, done: false, id: uuid() };
     setTodos([...todos, todo]);
   }
 
@@ -39,6 +39,7 @@ function App() {
   const filters = target =>{
 
     for(const todo of todos){
+      // todo.hide = !todo.title.includes (search) || !todo.description.includes(search);
       todo.hide=false;
       const hasSearched = todo.title.includes(search) || todo.description.includes(search);
 
@@ -46,12 +47,12 @@ function App() {
         todo.hide = false;
       }else if( (hasSearched) && (target.id==='Uncompleted' && target.checked && !todo.done)){
         todo.hide = false;
-      }else if( (hasSearched) || (target.id==='All' && target.checked)){
+      }else if( (hasSearched) && (target.id==='All' && target.checked)){
         todo.hide = false;
-      }
-      else{
+      }else{
         todo.hide = true;
       }
+      // todo.hide=true;
       setTodos([...todos]);
     }
 
