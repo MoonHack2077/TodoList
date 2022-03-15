@@ -2,6 +2,7 @@ import { TodoList } from '../components/List/TodoList/TodoList.jsx';
 import { CreateTodoButton } from '../components/Create/Button/CreateTodoButton.jsx';
 import { NavBar } from '../components/NavBar/Nav/NavBar.jsx';
 import { Detail } from '../components/Create/Detail/Detail.jsx';
+import { Modal } from '../components/Modal/Modal.jsx'
 import { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import './App.css';
@@ -13,6 +14,7 @@ function App() {
   const [ description , setDescription ] = useState('');
   const [ todos , setTodos ] = useState( JSON.parse(localStorage.getItem(KEY)) );
   const [ search , setSearch ] = useState('');
+  const [ title2 , setTitle2 ] = useState('');
 
   useEffect( () => localStorage.setItem( KEY, JSON.stringify(todos) ) , [todos]);
 
@@ -30,11 +32,23 @@ function App() {
     setTodos([...todos]);
   }
   
-  const remove = id =>{
+  const set = id => {
+    
+    console.log('.-.');
     const index = findTodo(id);
-    todos.splice( index , 1 );
-    setTodos([...todos]);
-  };
+
+    const remove = () =>{
+      todos.splice( index , 1 );
+      setTodos([...todos]);
+    };
+
+    const edit = () =>{
+      console.log('edit xdddd');
+      /*Code to edit the todo with modal*/ 
+    };
+
+    return { remove , edit };
+  }
 
   const filters = target =>{
 
@@ -62,11 +76,19 @@ function App() {
   return (
     <div className = 'App'>
 
+      {/* <Modal 
+      tileValue={title2} 
+      titleChange={ e => setTitle2(e.target.value) } 
+      descriptionValue={description} 
+      descriptionChange={ e => setDescription(e.target.value) }
+      /> */}
+
       <NavBar 
         value={ search } 
         onChange={ e => setSearch(e.target.value) }
         onClick = { e => filters(e) }
       />
+
 
       <section className = 'container'>
         <div className = 'Details'>
@@ -90,7 +112,7 @@ function App() {
         </div>
 
         <TodoList 
-          onClick = { remove } 
+          onClick = { set } 
           toggleCheck = { toggleCheck } 
           todos = {todos}
         />
