@@ -16,6 +16,9 @@ function App() {
   const [ todos , setTodos ] = useState( JSON.parse(localStorage.getItem(KEY)) );
   const [ search , setSearch ] = useState('');
   const [ hideModal , setHideModal ] = useState(true);
+  const [ newTitle , setNewTitle ] = useState('');
+  const [ newDescription , setNewDescription ] = useState('');
+  const [ completed , setCompleted ] = useState(false);
 
   useEffect( () => localStorage.setItem( KEY, JSON.stringify(todos) ) , [todos]);
 
@@ -43,12 +46,25 @@ function App() {
     };
 
     const edit = () => {
-      console.log('edit xdddd');
+      let xd = todos[index].title;
+      let pepe = todos[index].description;
+      const sech = todos[index].done;
+      setNewTitle(xd);
+      setNewDescription(pepe);
+      setCompleted(sech);
       setHideModal(!hideModal);
+      xd =  newTitle
+      pepe =  newDescription;
+      console.log(todos[index]);
+      setTodos([...todos]);
     };
 
-    return { remove , edit };
+    
+
+    return { remove , edit  };
   }
+
+  
 
   const filters = target =>{
 
@@ -74,7 +90,15 @@ function App() {
   return (
     <div className = 'App'>
 
-      <Modal hide={ hideModal } onClick={ () => setHideModal(!hideModal) }/>
+      <Modal 
+        hide={ hideModal } 
+        titleValue={ newTitle } 
+        titleChange={ e => setNewTitle( e.target.value )} 
+        descriptionValue={ newDescription } 
+        descriptionChange={ e => setNewDescription( e.target.value )} 
+        completed={completed}
+        onClick={ () => setHideModal(!hideModal) }
+      />
 
       <NavBar 
         value={ search } 
