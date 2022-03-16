@@ -46,17 +46,18 @@ function App() {
     };
 
     const edit = () => {
-      let xd = todos[index].title;
-      let pepe = todos[index].description;
-      const sech = todos[index].done;
-      setNewTitle(xd);
-      setNewDescription(pepe);
-      setCompleted(sech);
+      const { title, description, done } = todos[index];
+      setNewTitle(title);
+      setNewDescription(description);
+      setCompleted(done);
       setHideModal(!hideModal);
-      xd =  newTitle
-      pepe =  newDescription;
-      console.log(todos[index]);
-      setTodos([...todos]);
+
+      const toggleCompleted = () =>{
+        setCompleted(!done);
+        setTodos([...todos]);
+      }
+      
+      return { toggleCompleted }
     };
 
     
@@ -98,6 +99,8 @@ function App() {
         descriptionChange={ e => setNewDescription( e.target.value )} 
         completed={completed}
         onClick={ () => setHideModal(!hideModal) }
+        onChange= { set }
+        todos= {todos}
       />
 
       <NavBar 

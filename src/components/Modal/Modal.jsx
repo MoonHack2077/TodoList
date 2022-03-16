@@ -2,7 +2,18 @@ import React from 'react';
 import { Detail } from '../Create/Detail/Detail.jsx';
 import './Modal.css';
 
-function Modal({ hide, onClick, titleValue, titleChange, descriptionValue, descriptionChange, completed }){
+function Modal({ hide, 
+    onClick, 
+    titleValue,
+     titleChange, 
+     descriptionValue,
+     descriptionChange, 
+     completed,
+      onChange, 
+      todos 
+}){
+    console.log(todos);
+    // const pepinoso = todos.map( todo => { title, description, done }  )
     return(
         <div className={`Modal ${hide && 'none'}`}>
             <div className='modal-edit'>
@@ -13,7 +24,7 @@ function Modal({ hide, onClick, titleValue, titleChange, descriptionValue, descr
                 </div>
                <div className='completed'>
                     <label htmlFor="">Completed?</label>
-                    <input type="checkbox" checked={completed} />
+                    <input type="checkbox" checked={completed} onChange={()=>onChange().edit.toggleCompleted}/>
                 </div> 
                 <div className='save'>
                     <input type="button" value="Save" onClick={onClick}/>
