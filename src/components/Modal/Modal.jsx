@@ -5,26 +5,40 @@ import './Modal.css';
 function Modal({ hide, 
     onClick, 
     titleValue,
-     titleChange, 
-     descriptionValue,
-     descriptionChange, 
-     completed,
-      onChange, 
-      todos 
+    titleChange, 
+    descriptionValue,
+    descriptionChange, 
+    completed,
+    onChange, 
+    todos 
 }){
-    console.log(todos);
-    // const pepinoso = todos.map( todo => { title, description, done }  )
+    const pepinoso = todos.map( todo => todo.id  )
     return(
         <div className={`Modal ${hide && 'none'}`}>
             <div className='modal-edit'>
                 <div className="set">
                     <h1>Edit your todo</h1>
-                    <Detail info='Title' placeholder='Edit the title' value={titleValue} onChange={titleChange} />
-                    <Detail info='Description' placeholder='Edit the Description' value={descriptionValue} onChange={descriptionChange}/>
+                    <Detail 
+                        info='Title'
+                        placeholder='Edit the title' 
+                        value={titleValue} 
+                        onChange={titleChange} 
+                    />
+                    <Detail 
+                        info='Description' 
+                        placeholder='Edit the Description' 
+                        value={descriptionValue} 
+                        onChange={descriptionChange}
+                    />
                 </div>
                <div className='completed'>
-                    <label htmlFor="">Completed?</label>
-                    <input type="checkbox" checked={completed} onChange={()=>onChange().edit.toggleCompleted}/>
+                    <label htmlFor="completed">Completed?</label>
+                    <input 
+                        id='completed' 
+                        type="checkbox" 
+                        checked={completed} 
+                        onChange={()=>onChange(pepinoso).edit.toggleCompleted}
+                    />
                 </div> 
                 <div className='save'>
                     <input type="button" value="Save" onClick={onClick}/>

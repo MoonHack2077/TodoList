@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 
-function TodoItem({ id, title, description, done, hide, toggleCheck, onClick }){
+function TodoItem({ id, title, description, done, hide, onClick }){
   
-    const { remove , edit  } = onClick(id);
+    const { remove , edit , toggleCheck } = onClick(id);
 
     return (
         <React.Fragment>

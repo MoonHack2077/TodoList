@@ -11,34 +11,38 @@ const KEY = 'TODOS';
 
 
 function App() {
+  // States
   const [ title , setTitle ] = useState('');
   const [ description , setDescription ] = useState('');
-  const [ todos , setTodos ] = useState( JSON.parse(localStorage.getItem(KEY)) );
+  const [ todos , setTodos ] = useState( JSON.parse( localStorage.getItem( KEY ) ) );
   const [ search , setSearch ] = useState('');
   const [ hideModal , setHideModal ] = useState(true);
   const [ newTitle , setNewTitle ] = useState('');
   const [ newDescription , setNewDescription ] = useState('');
   const [ completed , setCompleted ] = useState(false);
 
-  useEffect( () => localStorage.setItem( KEY, JSON.stringify(todos) ) , [todos]);
 
+  // useEffect to look out to all todos and set these at thge localStorage
+  useEffect( () => localStorage.setItem( KEY, JSON.stringify( todos ) ) , [todos]);
+
+  //Create a todo
   const handle = () => {
     if(!title || !description) return
     const todo = { title, description, done: false, id: uuid() };
     setTodos([...todos, todo]);
   }
 
-  const findTodo = id => todos.findIndex( todo => todo.id===id );
+  //Find index of nesessary todo
+  const findTodo = id => todos.findIndex( todo => todo.id === id );
 
-  const toggleCheck = id => {
-    const index = findTodo(id);
-    todos[index].done = !todos[index].done;
-    setTodos([...todos]);
-  }
-  
+  //Set up todos
   const set = id => {
-    
     const index = findTodo(id);
+
+    const toggleCheck = () => {
+      todos[index].done = !todos[index].done;
+      setTodos([...todos]);
+    }
 
     const remove = () => {
       todos.splice( index , 1 );
@@ -52,21 +56,17 @@ function App() {
       setCompleted(done);
       setHideModal(!hideModal);
 
-      const toggleCompleted = () =>{
-        setCompleted(!done);
-        setTodos([...todos]);
-      }
       
-      return { toggleCompleted }
+      console.log(todos[index]);
     };
 
     
-
-    return { remove , edit  };
+    return { remove , edit , toggleCheck  };
   }
 
   
 
+  //Filter searched todos
   const filters = target =>{
 
     for(const todo of todos){
@@ -132,8 +132,7 @@ function App() {
         </div>
 
         <TodoList 
-          onClick = { set } 
-          toggleCheck = { toggleCheck } 
+          onClick = { set }
           todos = {todos}
         />
       </section>
