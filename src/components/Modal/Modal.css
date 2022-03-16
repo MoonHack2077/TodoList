@@ -18,7 +18,9 @@
     height: 600px;
     background-color: #333;
 }
-
+.none{
+    display: none;
+}
 .set{
     grid-row: 1/2;
     grid-column: span 2;

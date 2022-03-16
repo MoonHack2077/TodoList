@@ -9,12 +9,13 @@ import './App.css';
 
 const KEY = 'TODOS';
 
+
 function App() {
   const [ title , setTitle ] = useState('');
   const [ description , setDescription ] = useState('');
   const [ todos , setTodos ] = useState( JSON.parse(localStorage.getItem(KEY)) );
   const [ search , setSearch ] = useState('');
-  const [ title2 , setTitle2 ] = useState('');
+  const [ hideModal , setHideModal ] = useState(true);
 
   useEffect( () => localStorage.setItem( KEY, JSON.stringify(todos) ) , [todos]);
 
@@ -34,17 +35,16 @@ function App() {
   
   const set = id => {
     
-    console.log('.-.');
     const index = findTodo(id);
 
-    const remove = () =>{
+    const remove = () => {
       todos.splice( index , 1 );
       setTodos([...todos]);
     };
 
-    const edit = () =>{
+    const edit = () => {
       console.log('edit xdddd');
-      /*Code to edit the todo with modal*/ 
+      setHideModal(!hideModal);
     };
 
     return { remove , edit };
@@ -53,7 +53,6 @@ function App() {
   const filters = target =>{
 
     for(const todo of todos){
-      // todo.hide = !todo.title.includes (search) || !todo.description.includes(search);
       todo.hide=false;
       const hasSearched = todo.title.includes(search) || todo.description.includes(search);
 
@@ -66,7 +65,6 @@ function App() {
       }else{
         todo.hide = true;
       }
-      // todo.hide=true;
       setTodos([...todos]);
     }
 
@@ -76,17 +74,12 @@ function App() {
   return (
     <div className = 'App'>
 
-      {/* <Modal 
-      tileValue={title2} 
-      titleChange={ e => setTitle2(e.target.value) } 
-      descriptionValue={description} 
-      descriptionChange={ e => setDescription(e.target.value) }
-      /> */}
+      <Modal hide={ hideModal } onClick={ () => setHideModal(!hideModal) }/>
 
       <NavBar 
         value={ search } 
-        onChange={ e => setSearch(e.target.value) }
-        onClick = { e => filters(e) }
+        onChange={ e => setSearch( e.target.value ) }
+        onClick = { e => filters( e ) }
       />
 
 

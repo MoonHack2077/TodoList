@@ -5,8 +5,8 @@ import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
 
 function TodoItem({ id, title, description, done, hide, toggleCheck, onClick }){
-    // const edit = () => console.log('edit xd');
-    const { remove , edit } = onClick;
+  
+    const { remove , edit  } = onClick(id);
 
     return (
         <React.Fragment>
