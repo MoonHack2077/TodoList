@@ -12,7 +12,9 @@ function Modal({ hide,
     onChange, 
     todos 
 }){
-    const pepinoso = todos.map( todo => todo.id  )
+
+    
+    console.log(onChange);
     return(
         <div className={`Modal ${hide && 'none'}`}>
             <div className='modal-edit'>
@@ -36,8 +38,8 @@ function Modal({ hide,
                     <input 
                         id='completed' 
                         type="checkbox" 
-                        checked={completed} 
-                        onChange={()=>onChange(pepinoso).edit.toggleCompleted}
+                        checked={ completed } 
+                        onChange={ () => !completed }
                     />
                 </div> 
                 <div className='save'>

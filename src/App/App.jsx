@@ -38,9 +38,10 @@ function App() {
   //Set up todos
   const set = id => {
     const index = findTodo(id);
+    let { title, description, done } = todos[index];
 
     const toggleCheck = () => {
-      todos[index].done = !todos[index].done;
+      done = !done;
       setTodos([...todos]);
     }
 
@@ -50,18 +51,29 @@ function App() {
     };
 
     const edit = () => {
-      const { title, description, done } = todos[index];
       setNewTitle(title);
       setNewDescription(description);
       setCompleted(done);
       setHideModal(!hideModal);
 
-      
-      console.log(todos[index]);
+      const toggleCompleted = () =>{
+        setCompleted(!done);
+        done = completed;
+        setTodos({...todos});
+      }
+
+      const setNew = () => {
+        if(!newTitle || !newDescription) return
+        title = newTitle;
+        description = newDescription;
+        setTodos([...todos]);
+        setHideModal(!hideModal);
+      }
+      return { toggleCompleted , setNew };
     };
 
     
-    return { remove , edit , toggleCheck  };
+    return { remove , edit , toggleCheck, id  };
   }
 
   
@@ -98,7 +110,7 @@ function App() {
         descriptionValue={ newDescription } 
         descriptionChange={ e => setNewDescription( e.target.value )} 
         completed={completed}
-        onClick={ () => setHideModal(!hideModal) }
+        onClick={ set.edit }
         onChange= { set }
         todos= {todos}
       />
