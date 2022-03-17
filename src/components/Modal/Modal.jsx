@@ -8,29 +8,26 @@ function Modal({ hide,
     titleChange, 
     descriptionValue,
     descriptionChange, 
-    completed,
-    onChange, 
+    completed, 
     todos 
 }){
-
-    
-    console.log(onChange);
+    const { toggleCompleted , setNewValues } = onClick;
     return(
-        <div className={`Modal ${hide && 'none'}`}>
+        <div className={`Modal ${ hide && 'none' }`}>
             <div className='modal-edit'>
                 <div className="set">
                     <h1>Edit your todo</h1>
                     <Detail 
                         info='Title'
                         placeholder='Edit the title' 
-                        value={titleValue} 
-                        onChange={titleChange} 
+                        value={ titleValue } 
+                        onChange={ titleChange } 
                     />
                     <Detail 
                         info='Description' 
                         placeholder='Edit the Description' 
-                        value={descriptionValue} 
-                        onChange={descriptionChange}
+                        value={ descriptionValue } 
+                        onChange={ descriptionChange }
                     />
                 </div>
                <div className='completed'>
@@ -39,11 +36,11 @@ function Modal({ hide,
                         id='completed' 
                         type="checkbox" 
                         checked={ completed } 
-                        onChange={ () => !completed }
+                        onChange={ toggleCompleted }
                     />
                 </div> 
                 <div className='save'>
-                    <input type="button" value="Save" onClick={onClick}/>
+                    <input type="button" value="Save" onClick={ setNewValues }/>
                 </div>
             </div>
         </div>

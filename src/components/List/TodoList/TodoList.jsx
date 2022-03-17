@@ -3,7 +3,7 @@ import './TodoList.css';
 import { TodoItem } from '../TodoItem/TodoItem.jsx';
 
 
-function TodoList({todos=[], toggleCheck, onClick}){
+function TodoList({todos=[], onClick}){
     return (
         <table className="table" id="table">
           <thead>
@@ -17,16 +17,17 @@ function TodoList({todos=[], toggleCheck, onClick}){
           </thead>
           <tbody>                     
 
-            {todos.map(todo=>
-            <TodoItem
-              key = { todo.id }
-              id = { todo.id }  
-              title = { todo.title }
-              description = {todo.description } 
-              done = { todo.done }
-              hide = { todo.hide }
-              onClick = { onClick }
-             />)}
+            { todos.map( todo =>
+              <TodoItem
+                key = { todo.id }
+                id = { todo.id }  
+                title = { todo.title }
+                description = {todo.description } 
+                done = { todo.done }
+                hide = { todo.hide }
+                onClick = { onClick }
+              /> ) 
+            }
 
           </tbody>
         </table>

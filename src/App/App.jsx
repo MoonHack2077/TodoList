@@ -20,6 +20,7 @@ function App() {
   const [ newTitle , setNewTitle ] = useState('');
   const [ newDescription , setNewDescription ] = useState('');
   const [ completed , setCompleted ] = useState(false);
+  const [ todo , setTodo ]= useState({});
 
 
   // useEffect to look out to all todos and set these at thge localStorage
@@ -55,28 +56,36 @@ function App() {
       setNewDescription(description);
       setCompleted(done);
       setHideModal(!hideModal);
-
-      const toggleCompleted = () =>{
-        setCompleted(!done);
-        done = completed;
-        setTodos({...todos});
-      }
-
-      const setNew = () => {
-        if(!newTitle || !newDescription) return
-        title = newTitle;
-        description = newDescription;
-        setTodos([...todos]);
-        setHideModal(!hideModal);
-      }
-      return { toggleCompleted , setNew };
+      setTodo(todos[index]);
     };
 
     
     return { remove , edit , toggleCheck, id  };
   }
 
+  //Modal
+  const modalChanges = () =>{
+
+    let { title , description , done } = todo;
+
+    const toggleCompleted = () => {
+      setCompleted(!done);
+      done = completed;
+      setTodos({...todos});
+    }
   
+    const setNewValues = () => {
+      if(!newTitle || !newDescription) return
+      title = newTitle;
+      description = newDescription;
+      done = completed;
+      setHideModal(!hideModal);
+      setTodos([...todos]) 
+      console.log(title, description, done);
+    }
+
+    return { toggleCompleted , setNewValues }
+  }
 
   //Filter searched todos
   const filters = target =>{
@@ -110,9 +119,8 @@ function App() {
         descriptionValue={ newDescription } 
         descriptionChange={ e => setNewDescription( e.target.value )} 
         completed={completed}
-        onClick={ set.edit }
-        onChange= { set }
-        todos= {todos}
+        onClick={ modalChanges }
+        todo= {todo}
       />
 
       <NavBar 
