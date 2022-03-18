@@ -20,7 +20,7 @@ function App() {
   const [ newTitle , setNewTitle ] = useState('');
   const [ newDescription , setNewDescription ] = useState('');
   const [ completed , setCompleted ] = useState(false);
-  const [ todo , setTodo ]= useState({});
+  let [ TODO , SETTODO ]= useState({});
 
 
   // useEffect to look out to all todos and set these at thge localStorage
@@ -37,9 +37,9 @@ function App() {
   const findTodo = id => todos.findIndex( todo => todo.id === id );
 
   //Set up todos
-  const set = id => {
-    const index = findTodo(id);
-    let { title, description, done } = todos[index];
+  const set = targetId => {
+    const index = findTodo(targetId);
+    let { title, description, done, hide, id } = todos[index];
 
     const toggleCheck = () => {
       done = !done;
@@ -55,33 +55,45 @@ function App() {
       setNewTitle(title);
       setNewDescription(description);
       setCompleted(done);
+      SETTODO({ title, description, done, hide, id });
+      // console.log(TODO);
       setHideModal(!hideModal);
-      setTodo(todos[index]);
     };
 
     
-    return { remove , edit , toggleCheck, id  };
+    return { remove , edit , toggleCheck  };
   }
 
   //Modal
   const modalChanges = () =>{
 
-    let { title , description , done } = todo;
-
     const toggleCompleted = () => {
-      setCompleted(!done);
-      done = completed;
+      TODO.done = !TODO.done;
+      setCompleted(TODO.done);
+      // TODO.done = completed;
+      console.log(TODO);
       setTodos({...todos});
     }
   
     const setNewValues = () => {
-      if(!newTitle || !newDescription) return
-      title = newTitle;
-      description = newDescription;
-      done = completed;
+      if(!newTitle || !newDescription) return;
+      const before = findTodo(TODO.id);
+
+      // const newTODO = { ...TODO };
+      TODO.title = newTitle;
+      TODO.description = newDescription;
+      TODO.done = completed;
+      TODO.hide = false;
+
+      // console.log(newTODO);
+      SETTODO({...TODO});
+
+      todos.splice( todos[before] , 1 , TODO )
+      console.log(TODO);
+
+      setTodos([...todos]);
+      console.log(todos) ;
       setHideModal(!hideModal);
-      setTodos([...todos]) 
-      console.log(title, description, done);
     }
 
     return { toggleCompleted , setNewValues }
@@ -120,7 +132,7 @@ function App() {
         descriptionChange={ e => setNewDescription( e.target.value )} 
         completed={completed}
         onClick={ modalChanges }
-        todo= {todo}
+        todo= {TODO}
       />
 
       <NavBar 

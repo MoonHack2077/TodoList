@@ -11,7 +11,8 @@ function Modal({ hide,
     completed, 
     todos 
 }){
-    const { toggleCompleted , setNewValues } = onClick;
+    const { toggleCompleted , setNewValues } = onClick();
+    
     return(
         <div className={`Modal ${ hide && 'none' }`}>
             <div className='modal-edit'>
@@ -36,11 +37,11 @@ function Modal({ hide,
                         id='completed' 
                         type="checkbox" 
                         checked={ completed } 
-                        onChange={ toggleCompleted }
+                        onChange={ () => toggleCompleted() }
                     />
                 </div> 
                 <div className='save'>
-                    <input type="button" value="Save" onClick={ setNewValues }/>
+                    <input type="button" value="Save" onClick={ () => setNewValues() }/>
                 </div>
             </div>
         </div>

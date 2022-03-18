@@ -25,7 +25,7 @@ function TodoItem({ id, title, description, done, hide, onClick }){
                 <button 
                   className='icon check' 
                   onClick= { () => edit(id)  }
-                  ><FontAwesomeIcon icon= {faPencilAlt}/>
+                  ><FontAwesomeIcon icon= { faPencilAlt }/>
                 </button>
                 <button 
                   className='icon trash' 
