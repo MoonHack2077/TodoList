@@ -2,17 +2,17 @@ import React from 'react';
 import { Detail } from '../Create/Detail/Detail.jsx';
 import './Modal.css';
 
-function Modal({ hide, 
+function Modal({ 
+    hide, 
     onClick, 
     titleValue,
     titleChange, 
     descriptionValue,
     descriptionChange, 
-    completed, 
-    todos 
+    completed
 }){
     const { toggleCompleted , setNewValues } = onClick();
-    
+
     return(
         <div className={`Modal ${ hide && 'none' }`}>
             <div className='modal-edit'>
@@ -32,7 +32,7 @@ function Modal({ hide,
                     />
                 </div>
                <div className='completed'>
-                    <label htmlFor="completed">Completed?</label>
+                    <label htmlFor="completed"> Completed? </label>
                     <input 
                         id='completed' 
                         type="checkbox" 

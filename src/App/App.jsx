@@ -20,7 +20,7 @@ function App() {
   const [ newTitle , setNewTitle ] = useState('');
   const [ newDescription , setNewDescription ] = useState('');
   const [ completed , setCompleted ] = useState(false);
-  let [ TODO , SETTODO ]= useState({});
+  const [ TODO , SETTODO ]= useState({});
 
 
   // useEffect to look out to all todos and set these at thge localStorage
@@ -39,7 +39,7 @@ function App() {
   //Set up todos
   const set = targetId => {
     const index = findTodo(targetId);
-    let { title, description, done, hide, id } = todos[index];
+    let { title , description , done , hide , id } = todos[index];
 
     const toggleCheck = () => {
       done = !done;
@@ -56,43 +56,39 @@ function App() {
       setNewDescription(description);
       setCompleted(done);
       SETTODO({ title, description, done, hide, id });
-      // console.log(TODO);
       setHideModal(!hideModal);
     };
-
-    
+  
     return { remove , edit , toggleCheck  };
   }
 
-  //Modal
+  //Modal settings
   const modalChanges = () =>{
 
     const toggleCompleted = () => {
       TODO.done = !TODO.done;
       setCompleted(TODO.done);
-      // TODO.done = completed;
-      console.log(TODO);
-      setTodos({...todos});
+      const before = findTodo(TODO.id);
+      todos[before].done = TODO.done;
+      setTodos([...todos]);
     }
   
     const setNewValues = () => {
       if(!newTitle || !newDescription) return;
       const before = findTodo(TODO.id);
 
-      // const newTODO = { ...TODO };
+      //Injecting new values
       TODO.title = newTitle;
       TODO.description = newDescription;
       TODO.done = completed;
       TODO.hide = false;
+      TODO.id = uuid();
 
-      // console.log(newTODO);
       SETTODO({...TODO});
 
-      todos.splice( todos[before] , 1 , TODO )
-      console.log(TODO);
+      todos.splice( todos[before] , 1 , TODO );
 
       setTodos([...todos]);
-      console.log(todos) ;
       setHideModal(!hideModal);
     }
 
@@ -130,9 +126,8 @@ function App() {
         titleChange={ e => setNewTitle( e.target.value )} 
         descriptionValue={ newDescription } 
         descriptionChange={ e => setNewDescription( e.target.value )} 
-        completed={completed}
+        completed={ completed }
         onClick={ modalChanges }
-        todo= {TODO}
       />
 
       <NavBar 
@@ -165,7 +160,7 @@ function App() {
 
         <TodoList 
           onClick = { set }
-          todos = {todos}
+          todos = { todos }
         />
       </section>
     </div>
