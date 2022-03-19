@@ -11,25 +11,34 @@ function TodoItem({ id, title, description, done, hide, onClick }){
     return (
         <React.Fragment>
             <tr id={ id } className={`TodoItem ${hide && 'none'}`}>
+
               <td >
                 { title }
               </td>
+
               <td >
                 { description }
               </td>
+
               <td >
-                <input type="checkbox" checked={ done } onChange={ () => toggleCheck(id) }/>
+                <input 
+                  type="checkbox" 
+                  checked={ done } 
+                  onChange={ () => toggleCheck() } 
+                />
               </td>
+
               <td >
               
                 <button 
                   className='icon check' 
-                  onClick= { () => edit(id)  }
+                  onClick= { () => edit()  }
                   ><FontAwesomeIcon icon= { faPencilAlt }/>
                 </button>
+
                 <button 
                   className='icon trash' 
-                  onClick= { () => remove(id) }
+                  onClick= { () => remove() }
                   ><FontAwesomeIcon icon= { faTrash }/>
                 </button>
 

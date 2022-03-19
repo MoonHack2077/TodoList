@@ -12,9 +12,9 @@ const KEY = 'TODOS';
 
 function App() {
   // States
+  const [ todos , setTodos ] = useState( JSON.parse( localStorage.getItem( KEY ) ) );
   const [ title , setTitle ] = useState('');
   const [ description , setDescription ] = useState('');
-  const [ todos , setTodos ] = useState( JSON.parse( localStorage.getItem( KEY ) ) );
   const [ search , setSearch ] = useState('');
   const [ hideModal , setHideModal ] = useState(true);
   const [ newTitle , setNewTitle ] = useState('');
@@ -23,7 +23,7 @@ function App() {
   const [ TODO , SETTODO ]= useState({});
 
 
-  // useEffect to look out to all todos and set these at thge localStorage
+  // useEffect to look out to all todos and set these at the localStorage
   useEffect( () => localStorage.setItem( KEY, JSON.stringify( todos ) ) , [todos]);
 
   //Create a todo
@@ -39,16 +39,18 @@ function App() {
   //Set up todos
   const set = targetId => {
     const index = findTodo(targetId);
-    let { title , description , done , hide , id } = todos[index];
+    const newTodos = [...todos];
+    let { title , description , done , hide , id } = newTodos[index];
 
     const toggleCheck = () => {
       done = !done;
-      setTodos([...todos]);
+      console.log(newTodos[index]);
+      setTodos(newTodos);
     }
 
     const remove = () => {
-      todos.splice( index , 1 );
-      setTodos([...todos]);
+      newTodos.splice( index , 1 );
+      setTodos(newTodos);
     };
 
     const edit = () => {
@@ -63,19 +65,20 @@ function App() {
   }
 
   //Modal settings
-  const modalChanges = () =>{
+  const modalSettings = () =>{
+
+    const before = findTodo(TODO.id);
+    const newTodos = [...todos];
 
     const toggleCompleted = () => {
       TODO.done = !TODO.done;
       setCompleted(TODO.done);
-      const before = findTodo(TODO.id);
-      todos[before].done = TODO.done;
-      setTodos([...todos]);
+      newTodos[before].done = TODO.done;
+      setTodos(newTodos);
     }
   
     const setNewValues = () => {
       if(!newTitle || !newDescription) return;
-      const before = findTodo(TODO.id);
 
       //Injecting new values
       TODO.title = newTitle;
@@ -86,9 +89,9 @@ function App() {
 
       SETTODO({...TODO});
 
-      todos.splice( todos[before] , 1 , TODO );
+      newTodos.splice( before, 1 , TODO );
 
-      setTodos([...todos]);
+      setTodos(newTodos);
       setHideModal(!hideModal);
     }
 
@@ -127,7 +130,7 @@ function App() {
         descriptionValue={ newDescription } 
         descriptionChange={ e => setNewDescription( e.target.value )} 
         completed={ completed }
-        onClick={ modalChanges }
+        onClick={ modalSettings }
       />
 
       <NavBar 
