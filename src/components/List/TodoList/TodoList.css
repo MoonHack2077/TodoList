@@ -4,3 +4,8 @@
   color: #fff;
   border-spacing: 8px;
 }
+.pepe{
+  width: 100%;
+  max-height: 617px;
+  overflow-y: auto;
+}

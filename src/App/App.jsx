@@ -119,6 +119,10 @@ function App() {
 
   }
 
+  const removeAllDone = () => {
+    const newTodos = [...todos];
+    setTodos( newTodos.filter( todo => !todo.done ) );
+  }
 
   return (
     <div className = 'App'>
@@ -160,10 +164,20 @@ function App() {
 
         </div>
 
+      <div className='pepe'>
+        
         <TodoList 
-          onClick = { setUpTodo }
-          todos = { todos }
-        />
+            onClick = { setUpTodo }
+            todos = { todos }
+          />
+      </div>
+
+        <input 
+          className='add'
+          type='button' 
+          value='Remove all done' 
+          onClick={ removeAllDone }
+          />
       </section>
     </div>
   );
