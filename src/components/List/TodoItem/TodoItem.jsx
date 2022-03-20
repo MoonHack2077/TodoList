@@ -3,9 +3,7 @@ import './TodoItem.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
-
 function TodoItem({ id, title, description, done, hide, onClick }){
-  
     const { remove , edit , toggleCheck } = onClick(id);
 
     return (

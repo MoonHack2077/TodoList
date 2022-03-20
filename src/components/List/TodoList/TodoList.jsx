@@ -2,8 +2,7 @@ import React from 'react';
 import './TodoList.css';
 import { TodoItem } from '../TodoItem/TodoItem.jsx';
 
-
-function TodoList({todos=[], onClick}){
+function TodoList({ todos=[], onClick }){
     return (
         <table className="table" id="table">
           <thead>

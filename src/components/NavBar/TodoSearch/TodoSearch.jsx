@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import './TodoSearch.css';
 
 function TodoSearch({ placeholder, info, onChange, value }){

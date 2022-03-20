@@ -1,10 +1,10 @@
 import React from 'react';
 import './Checkboxes.css';
 
-function Checkboxes({ info, onChange, onClick }){
+function Checkboxes({ info , onClick }){
     return(
         <div>
-            <input onClick={ e => onClick(e.target)} type='checkbox' id={ info }/>
+            <input onClick={ e => onClick( e.target ) } type='checkbox' id={ info }/>
             <label className='checkboxes-label' htmlFor={ info }>{ info }</label>
         </div>
     )

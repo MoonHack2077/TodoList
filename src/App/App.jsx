@@ -9,7 +9,6 @@ import './App.css';
 
 const KEY = 'TODOS';
 
-
 function App() {
   // States
   const [ todos , setTodos ] = useState( JSON.parse( localStorage.getItem( KEY ) ) );
@@ -22,29 +21,29 @@ function App() {
   const [ completed , setCompleted ] = useState(false);
   const [ TODO , SETTODO ]= useState({});
 
-
   // useEffect to look out to all todos and set these at the localStorage
-  useEffect( () => localStorage.setItem( KEY, JSON.stringify( todos ) ) , [todos]);
+  useEffect( () => localStorage.setItem( KEY , JSON.stringify( todos ) ) , [todos]);
 
-  //Create a todo
-  const handle = () => {
-    if(!title || !description) return
-    const todo = { title, description, done: false, id: uuid() };
+  //Create todo
+  const create = () => {
+    if(!title || !description) return;
+    const todo = { title , description , done: false , id: uuid() };
     setTodos([...todos, todo]);
+    setTitle('');
+    setDescription('');
   }
 
   //Find index of nesessary todo
   const findTodo = id => todos.findIndex( todo => todo.id === id );
 
   //Set up todos
-  const set = targetId => {
-    const index = findTodo(targetId);
+  const setUpTodo = targetId => {
     const newTodos = [...todos];
+    const index = findTodo(targetId);
     let { title , description , done , hide , id } = newTodos[index];
 
     const toggleCheck = () => {
-      done = !done;
-      console.log(newTodos[index]);
+      newTodos[index].done = !newTodos[index].done;
       setTodos(newTodos);
     }
 
@@ -65,15 +64,14 @@ function App() {
   }
 
   //Modal settings
-  const modalSettings = () =>{
-
-    const before = findTodo(TODO.id);
+  const modalSettings = () => {
+    const index = findTodo(TODO.id);
     const newTodos = [...todos];
 
     const toggleCompleted = () => {
       TODO.done = !TODO.done;
       setCompleted(TODO.done);
-      newTodos[before].done = TODO.done;
+      newTodos[index].done = completed;
       setTodos(newTodos);
     }
   
@@ -89,7 +87,7 @@ function App() {
 
       SETTODO({...TODO});
 
-      newTodos.splice( before, 1 , TODO );
+      newTodos.splice( index, 1 , TODO );
 
       setTodos(newTodos);
       setHideModal(!hideModal);
@@ -99,17 +97,19 @@ function App() {
   }
 
   //Filter searched todos
-  const filters = target =>{
+  const filters = target => {
+    const { id , checked } = target;
 
     for(const todo of todos){
       todo.hide=false;
-      const hasSearched = todo.title.includes(search) || todo.description.includes(search);
+      const searchedLower = search.toLowerCase();
+      const hasSearched = todo.title.toLowerCase().includes(searchedLower) || todo.description.toLowerCase().includes(searchedLower);
 
-      if( (hasSearched) && (target.id==='Done' && target.checked && todo.done)){
+      if( (hasSearched) && (id==='Done' && checked && todo.done)){
         todo.hide = false;
-      }else if( (hasSearched) && (target.id==='Uncompleted' && target.checked && !todo.done)){
+      }else if( (hasSearched) && (id==='Uncompleted' && checked && !todo.done)){
         todo.hide = false;
-      }else if( (hasSearched) && (target.id==='All' && target.checked)){
+      }else if( (hasSearched) && (id==='All' && checked)){
         todo.hide = false;
       }else{
         todo.hide = true;
@@ -139,7 +139,6 @@ function App() {
         onClick = { e => filters( e ) }
       />
 
-
       <section className = 'container'>
         <div className = 'Details'>
 
@@ -157,12 +156,12 @@ function App() {
             placeholder = 'Add a Description...'
           />
 
-          <CreateTodoButton onClick = { handle }/>
+          <CreateTodoButton onClick = { create }/>
 
         </div>
 
         <TodoList 
-          onClick = { set }
+          onClick = { setUpTodo }
           todos = { todos }
         />
       </section>

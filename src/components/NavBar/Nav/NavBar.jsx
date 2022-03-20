@@ -1,6 +1,5 @@
 import React from 'react';
 import {Checkboxes} from '../Checkboxes/Checkboxes'
-// import { TodoSearch } from '../TodoSearch/TodoSearch.jsx'
 import './NavBar.css'
 
 function NavBar({onClick, onChange, value }){
@@ -12,7 +11,7 @@ function NavBar({onClick, onChange, value }){
                 <Checkboxes onClick={onClick} info='All'/>
                 <Checkboxes onClick={onClick} info='Done'/>
                 <Checkboxes onClick={onClick} info='Uncompleted'/>
-                <input className='TodoSearch' type='text' value={value} onChange={onChange} placeholder='Search a Todo'/>
+                <input className='TodoSearch' type='text' value={ value } onChange={ onChange } placeholder='Search Todo'/>
             </section>
         </nav>
     )
