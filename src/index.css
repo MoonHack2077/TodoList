@@ -1,5 +1,5 @@
 *{
-  padding: 0px;
+  padding: 0;
   margin: 0;
   font-family: monospace;
 }
@@ -7,10 +7,10 @@
 :root{
   --nav-color: #444;
   --nav-padding: 10px;
-  --add-todo: #45f;
+  --add-remove-btn: #45f;
   --edit-todo: #67f;
-  --delete-todo: #f51;
-  --input-padding: 8px;
+  --red: #f51;
+  --input-padding: 6px;
   --input-radio: 8px;
-  --label-color: #fff;
+  --white: #fff;
 }

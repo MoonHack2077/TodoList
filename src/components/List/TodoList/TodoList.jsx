@@ -12,6 +12,7 @@ function TodoList({ todos=[], onClick }){
               <th >
                 <div > Completed  </div>
               </th>
+              <th >Edit/Delete </th>
             </tr>
           </thead>
           <tbody>                     

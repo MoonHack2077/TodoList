@@ -154,9 +154,13 @@ function App() {
         onClick = { e => filters( e ) }
       />
 
-      <Alert message='Title and description are required!!' hide={hideAlertDetail}/>
+      
 
       <section className = 'container'>
+        <Alert 
+        message='Title and description are required!!' 
+        hide={hideAlertDetail}
+      />
         <div className = 'Details'>
 
 
@@ -185,14 +189,15 @@ function App() {
             todos = { todos }
           />
       </div>
+      </section>
 
-        <input 
-          className='add'
+      <input 
+          className='add remove'
           type='button' 
           value='Remove all done' 
           onClick={ removeAllDone }
-          />
-      </section>
+        />
+
     </div>
   );
 }

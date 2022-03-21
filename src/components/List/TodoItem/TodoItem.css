@@ -1,5 +1,5 @@
 .TodoItem{
-  color: #fff;
+  color: var(--white);;
   width: 100%;
 }
 .icon{
@@ -18,7 +18,7 @@
   background-color: var(--edit-todo);
 }
 .trash{
-  background-color: var(--delete-todo);
+  background-color: var(--red);
 }
 tr td{
   text-align: center;

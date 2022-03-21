@@ -2,9 +2,9 @@
   width: 155px;
   outline: none;
   border: none;
-  color: #fff;
+  color: var(--white);;
   padding: var(--input-padding);
-  background-color: var(--add-todo);
+  background-color: var(--add-remove-btn);
   border-radius: var(--input-radio);
   cursor: pointer;
 }

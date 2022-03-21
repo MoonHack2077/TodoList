@@ -16,10 +16,12 @@
 
 .Detail-label{
     font-size: 20px;
-    color: var(--label-color);
+    color: var(--white);
 }
 
-#Description{
-    width: 200px;
-    flex: 1;
+@media screen and (max-width: 370px){
+    .Detail{
+        gap: 10px;
+        flex-direction: column;
+    }
 }

@@ -7,7 +7,7 @@
     background-color: var(--nav-color)
 }
 .navBar-icon{
-  color: #fff;
+  color: var(--white);;
   font-size: 25px;
 }
 .filters-container{

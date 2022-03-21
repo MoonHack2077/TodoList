@@ -1,7 +1,7 @@
 .table{
   width: 100%;
   padding: 20px;
-  color: #fff;
+  color: var(--white);;
   border-spacing: 8px;
 }
 .pepe{
