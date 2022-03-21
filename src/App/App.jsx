@@ -17,6 +17,8 @@ function App() {
   const [ description , setDescription ] = useState('');
   const [ search , setSearch ] = useState('');
   const [ hideModal , setHideModal ] = useState(true);
+  const [ hideAlertDetail , setHideAlertDetail ] = useState(true);
+  const [ hideAlertModal , setHideAlertModal ] = useState(true);
   const [ newTitle , setNewTitle ] = useState('');
   const [ newDescription , setNewDescription ] = useState('');
   const [ completed , setCompleted ] = useState(false);
@@ -27,7 +29,11 @@ function App() {
 
   //Create todo
   const create = () => {
-    if(!title || !description) return;
+    if(!title || !description){
+      setHideAlertDetail(false);
+      return;
+    }
+    setHideAlertDetail(true);
     const todo = { title , description , done: false , id: uuid() };
     setTodos([...todos, todo]);
     setTitle('');
@@ -77,8 +83,11 @@ function App() {
     }
   
     const setNewValues = () => {
-      if(!newTitle || !newDescription) return;
-
+      if(!newTitle || !newDescription){
+        setHideAlertModal(false);
+        return;
+      }
+      setHideAlertModal(true);
       //Injecting new values
       TODO.title = newTitle;
       TODO.description = newDescription;
@@ -129,7 +138,8 @@ function App() {
     <div className = 'App'>
 
       <Modal 
-        hide={ hideModal } 
+        hideModal={ hideModal } 
+        hideAlertModal = { hideAlertModal }
         titleValue={ newTitle } 
         titleChange={ e => setNewTitle( e.target.value )} 
         descriptionValue={ newDescription } 
@@ -144,10 +154,11 @@ function App() {
         onClick = { e => filters( e ) }
       />
 
+      <Alert message='Title and description are required!!' hide={hideAlertDetail}/>
+
       <section className = 'container'>
         <div className = 'Details'>
 
-        <Alert message='Title and description are required' hide={false}/>
 
           <Detail 
             value = { title } 

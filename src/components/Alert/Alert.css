@@ -1,6 +1,12 @@
 .Alert{
-    width: 100%;
+    display: grid;
+    align-items: center;; 
+    width: 90%;
     height: 90px;
+    margin-left: 40px;
+    margin-top: 40px;
+    border-radius: 10px;
+    padding-left: 10px;
     background-color: var(--delete-todo);
     color: #fff;
 }

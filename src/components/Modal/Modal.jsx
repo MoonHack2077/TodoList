@@ -1,9 +1,11 @@
 import React from 'react';
 import { Detail } from '../Create/Detail/Detail.jsx';
+import { Alert } from '../Alert/Alert.jsx';
 import './Modal.css';
 
 function Modal({ 
-    hide, 
+    hideModal, 
+    hideAlertModal,
     onClick, 
     titleValue,
     titleChange, 
@@ -14,7 +16,7 @@ function Modal({
     const { toggleCompleted , setNewValues } = onClick();
 
     return(
-        <div className={`Modal ${ hide && 'none' }`}>
+        <div className={`Modal ${ hideModal && 'none' }`}>
             <div className='modal-edit'>
                 <div className="set">
                     <h1>Edit your todo</h1>
@@ -43,6 +45,7 @@ function Modal({
                 <div className='save'>
                     <input type="button" value="Save" onClick={ () => setNewValues() }/>
                 </div>
+                <Alert message='Title and description are required!!' hide={hideAlertModal} />
             </div>
         </div>
     )

@@ -4,7 +4,7 @@ import './Alert.css';
 function Alert({ message , hide }){
     return(
         <div className={`Alert ${ hide && 'none' }`} >
-            <p>{ message }</p>
+            <h2>{ message }</h2>
         </div>
     )
 }

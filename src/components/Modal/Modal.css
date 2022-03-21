@@ -12,14 +12,10 @@
     grid-template-rows: repeat(2,1fr);
     justify-content: center;
     align-items: center;
-    /* gap: 80px; */
     place-items: center;
     width: 500px;
     height: 600px;
     background-color: #333;
-}
-.none{
-    display: none;
 }
 .set{
     grid-row: 1/2;
@@ -34,4 +30,7 @@
 .save{
     grid-column: 2/3;
     grid-row: 2/3;
+}
+.Alert{
+    grid-column: 1/3;
 }
