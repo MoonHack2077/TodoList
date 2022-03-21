@@ -9,16 +9,16 @@
   color: #ddd;
   margin-bottom: 1px;
   border-radius: 6px;
-  margin: 0 3px 0
+  margin: 0 3px 0;
 }
 .icon:hover{
   filter: brightness(.5);
 }
 .check{
-  background-color: var(--edit-todo)
+  background-color: var(--edit-todo);
 }
 .trash{
-  background-color: var(--delete-todo)
+  background-color: var(--delete-todo);
 }
 tr td{
   text-align: center;

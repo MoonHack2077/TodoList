@@ -2,7 +2,8 @@ import { TodoList } from '../components/List/TodoList/TodoList.jsx';
 import { CreateTodoButton } from '../components/Create/Button/CreateTodoButton.jsx';
 import { NavBar } from '../components/NavBar/Nav/NavBar.jsx';
 import { Detail } from '../components/Create/Detail/Detail.jsx';
-import { Modal } from '../components/Modal/Modal.jsx'
+import { Modal } from '../components/Modal/Modal.jsx';
+import { Alert } from '../components/Alert/Alert.jsx';
 import { useState, useEffect } from 'react';
 import { v4 as uuid } from 'uuid';
 import './App.css';
@@ -145,6 +146,8 @@ function App() {
 
       <section className = 'container'>
         <div className = 'Details'>
+
+        <Alert message='Title and description are required' hide={false}/>
 
           <Detail 
             value = { title } 
