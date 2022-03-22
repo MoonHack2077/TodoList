@@ -155,14 +155,12 @@ function App() {
       />
 
       
-
       <section className = 'container'>
         <Alert 
         message='Title and description are required!!' 
         hide={hideAlertDetail}
       />
         <div className = 'Details'>
-
 
           <Detail 
             value = { title } 
@@ -182,8 +180,7 @@ function App() {
 
         </div>
 
-      <div className='pepe'>
-        
+      <div className='TodoList-container'>
         <TodoList 
             onClick = { setUpTodo }
             todos = { todos }
@@ -196,7 +193,7 @@ function App() {
           type='button' 
           value='Remove all done' 
           onClick={ removeAllDone }
-        />
+      />
 
     </div>
   );
