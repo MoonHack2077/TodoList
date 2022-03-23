@@ -34,7 +34,7 @@ function Modal({
                     />
                 </div>
                <div className='completed'>
-                    <label htmlFor="completed"> Completed? </label>
+                    <label htmlFor="completed"> Completed </label>
                     <input 
                         id='completed' 
                         type="checkbox" 
@@ -43,7 +43,12 @@ function Modal({
                     />
                 </div> 
                 <div className='save'>
-                    <input type="button" value="Save" onClick={ () => setNewValues() }/>
+                    <input 
+                        className='add' 
+                        type="button" 
+                        value="Save" 
+                        onClick={ () => setNewValues() }
+                    />
                 </div>
                 <Alert 
                     className='Alert-Modal'

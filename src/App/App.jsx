@@ -153,7 +153,6 @@ function App() {
         onChange={ e => setSearch( e.target.value ) }
         onClick = { e => filters( e ) }
       />
-
       
       <section className = 'container'>
         <Alert 
