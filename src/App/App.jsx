@@ -1,5 +1,5 @@
 import { TodoList } from '../components/List/TodoList/TodoList.jsx';
-import { CreateTodoButton } from '../components/Create/Button/CreateTodoButton.jsx';
+import { BtnSet } from '../components/Create/Button/BtnSet.jsx';
 import { NavBar } from '../components/NavBar/Nav/NavBar.jsx';
 import { Detail } from '../components/Create/Detail/Detail.jsx';
 import { Modal } from '../components/Modal/Modal.jsx';
@@ -176,7 +176,7 @@ function App() {
             placeholder = 'Add a Description...'
           />
 
-          <CreateTodoButton onClick = { create }/>
+          <BtnSet className='btn-set' value='Add' onClick = { create }/>
 
         </div>
 
@@ -188,9 +188,8 @@ function App() {
       </div>
       </section>
 
-      <input 
-          className='add remove'
-          type='button' 
+      <BtnSet 
+          className='btn-set remove'
           value='Remove all done' 
           onClick={ removeAllDone }
       />

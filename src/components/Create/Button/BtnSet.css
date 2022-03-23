@@ -1,4 +1,4 @@
-.add{
+.btn-set{
   width: 155px;
   outline: none;
   border: none;
@@ -8,6 +8,6 @@
   border-radius: var(--input-radio);
   cursor: pointer;
 }
-.add:hover{
+.btn-set:hover{
   filter: brightness(1.2);
 }

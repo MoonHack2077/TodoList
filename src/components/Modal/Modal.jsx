@@ -1,6 +1,7 @@
 import React from 'react';
 import { Detail } from '../Create/Detail/Detail.jsx';
 import { Alert } from '../Alert/Alert.jsx';
+import { BtnSet } from '../Create/Button/BtnSet.jsx';
 import './Modal.css';
 
 function Modal({ 
@@ -43,9 +44,8 @@ function Modal({
                     />
                 </div> 
                 <div className='save'>
-                    <input 
-                        className='add' 
-                        type="button" 
+                    <BtnSet 
+                        className='btn-set'
                         value="Save" 
                         onClick={ () => setNewValues() }
                     />

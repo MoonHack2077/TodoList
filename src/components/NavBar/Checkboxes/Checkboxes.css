@@ -1,5 +1,10 @@
 .checkboxes-label{
     margin-left: 3px;
+    margin-right: 8px;
     color: var(--white);
     font-size: 17px;
+}
+
+.checkbox-filter{
+    margin-left: 10px;
 }

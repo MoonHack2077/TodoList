@@ -1,5 +1,6 @@
 import React , { useState } from 'react';
 import { Checkboxes } from '../Checkboxes/Checkboxes';
+import { SetValues } from '../SetValues/SetValues.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars} from '@fortawesome/free-solid-svg-icons';
 import './NavBar.css';
@@ -17,15 +18,15 @@ function NavBar({ onClick , onChange , value }){
                     <Checkboxes onClick={ onClick } info='All'/>
                     <Checkboxes onClick={ onClick } info='Done'/>
                     <Checkboxes onClick={ onClick } info='Uncompleted'/>
-                    <input 
-                        className='TodoSearch pepe' 
-                        type='text' value={ value }
+                    <SetValues 
+                        className='SetValues SetValues-Nav' 
+                        value={ value }
                         onChange={ onChange } 
                         placeholder='Search Todo'
                     />
                 </div>
             </section>
-            <div className='burger-container' onClick={ () => setHideNav(!hideNav) } >
+            <div className='menu-container' onClick={ () => setHideNav( !hideNav ) } >
                 <FontAwesomeIcon className='burger' icon={ faBars } />
             </div>
         </nav>
