@@ -6,7 +6,7 @@ import './NavBar.css';
 
 
 function NavBar({ onClick , onChange , value }){
-    const [ hideNav , setHideNav ] = useState(true);
+    const [ hideNav , setHideNav ] = useState(false);
 
     return(
         <nav className='navBar' >
@@ -18,7 +18,7 @@ function NavBar({ onClick , onChange , value }){
                     <Checkboxes onClick={ onClick } info='Done'/>
                     <Checkboxes onClick={ onClick } info='Uncompleted'/>
                     <input 
-                        className='TodoSearch' 
+                        className='TodoSearch pepe' 
                         type='text' value={ value }
                         onChange={ onChange } 
                         placeholder='Search Todo'

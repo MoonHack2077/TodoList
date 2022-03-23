@@ -157,8 +157,9 @@ function App() {
       
       <section className = 'container'>
         <Alert 
-        message='Title and description are required!!' 
-        hide={hideAlertDetail}
+          className='Alert-Detail'
+          message='Title and description are required!!' 
+          hide={ hideAlertDetail }
       />
         <div className = 'Details'>
 

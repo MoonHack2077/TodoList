@@ -45,7 +45,11 @@ function Modal({
                 <div className='save'>
                     <input type="button" value="Save" onClick={ () => setNewValues() }/>
                 </div>
-                <Alert message='Title and description are required!!' hide={hideAlertModal} />
+                <Alert 
+                    className='Alert-Modal'
+                    message='Title and description are required!!' 
+                    hide={ hideAlertModal }  
+                />
             </div>
         </div>
     )
