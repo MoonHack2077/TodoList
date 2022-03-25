@@ -4,10 +4,11 @@ import { v4 as uuid } from 'uuid';
 const KEY = 'TODOS';
 
 function AppLogic(){
+    //Variable to kwon if there are Todos at the localStorage
     const storedTodos = JSON.parse( localStorage.getItem( KEY ) ) ? JSON.parse( localStorage.getItem( KEY ) ) : [];
     
     // States
-    const [ todos , setTodos ] = useState( storedTodos );
+    const [ todos , setTodos ] = useState(storedTodos);
     const [ title , setTitle ] = useState('');
     const [ description , setDescription ] = useState('');
     const [ search , setSearch ] = useState('');
@@ -17,18 +18,28 @@ function AppLogic(){
     const [ newTitle , setNewTitle ] = useState('');
     const [ newDescription , setNewDescription ] = useState('');
     const [ completed , setCompleted ] = useState(false);
-    const [ TODO , SETTODO ]= useState({});
+    const [ TODO , SETTODO ] = useState({});
 
+    //Function to get the state of alerts
     const getHideAlerts = () =>{
         return { hideAlertDetail , hideAlertModal }
     }
-
     
-    
+    //Function to return all states
     const States = () =>{
-        return { todos , title , description , search , hideModal , newTitle , newDescription , completed , TODO }
+        return { todos , 
+            title , 
+            description , 
+            search , 
+            hideModal , 
+            newTitle , 
+            newDescription , 
+            completed , 
+            TODO 
+        }
     }
 
+    //Function to return the set of respective state
     const SetStates = () =>{
         const SetTitle = param =>  setTitle (param);
         const SetDescription = param => setDescription(param)
@@ -45,8 +56,8 @@ function AppLogic(){
     //Create todo
     const create = () => {
         if(!title || !description){
-        setHideAlertDetail(false);
-        return;
+            setHideAlertDetail(false);
+            return;
         }
         setHideAlertDetail(true);
         const todo = { title , description , done: false , id: uuid() };
@@ -54,7 +65,6 @@ function AppLogic(){
         setTitle('');
         setDescription('');
     }
-
 
     //Find index of nesessary todo
     const findTodo = id => todos.findIndex( todo => todo.id === id );
@@ -104,6 +114,7 @@ function AppLogic(){
                 return;
             }
             setHideAlertModal(true);
+
             //Injecting new values
             TODO.title = newTitle;
             TODO.description = newDescription;
@@ -126,7 +137,7 @@ function AppLogic(){
     const filters = target => {
         const { id , checked } = target;
 
-        for(const todo of todos){
+        for( const todo of todos ){
             todo.hide=false;
             const searchedLower = search.toLowerCase();
             const hasSearched = todo.title.toLowerCase().includes(searchedLower) || todo.description.toLowerCase().includes(searchedLower);
@@ -144,15 +155,22 @@ function AppLogic(){
         }
 
     }
-
-    
+ 
     //Function to remove all todos done
     const removeAllDone = () => {
         const newTodos = [...todos];
         setTodos( newTodos.filter( todo => !todo.done ) );
     }
 
-    return { create , setUpTodo , modalSettings , filters , removeAllDone , getHideAlerts , SetStates , States}
+    return { create , 
+        setUpTodo , 
+        modalSettings , 
+        filters , 
+        removeAllDone , 
+        getHideAlerts , 
+        SetStates , 
+        States
+    }
 }
 
 export { AppLogic }
