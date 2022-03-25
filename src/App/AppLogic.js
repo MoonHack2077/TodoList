@@ -4,8 +4,10 @@ import { v4 as uuid } from 'uuid';
 const KEY = 'TODOS';
 
 function AppLogic(){
+    const storedTodos = JSON.parse( localStorage.getItem( KEY ) ) ? JSON.parse( localStorage.getItem( KEY ) ) : [];
+    
     // States
-    const [ todos , setTodos ] = useState( JSON.parse( localStorage.getItem( KEY ) ) );
+    const [ todos , setTodos ] = useState( storedTodos );
     const [ title , setTitle ] = useState('');
     const [ description , setDescription ] = useState('');
     const [ search , setSearch ] = useState('');
@@ -21,13 +23,22 @@ function AppLogic(){
         return { hideAlertDetail , hideAlertModal }
     }
 
-    const SetStates = param =>{
-        return { setTitle(param) , setDescription(param) , setNewTitle(param) , setNewDescription(param) }
-    }
+    
     
     const States = () =>{
         return { todos , title , description , search , hideModal , newTitle , newDescription , completed , TODO }
     }
+
+    const SetStates = () =>{
+        const SetTitle = param =>  setTitle (param);
+        const SetDescription = param => setDescription(param)
+        const SetNewTitle = param => setNewTitle (param);
+        const SetNewDescription = param => setNewDescription(param);
+        const SetSearch = param => setSearch (param);
+        
+        return { SetTitle , SetDescription , SetNewTitle , SetNewDescription ,  SetSearch }
+    }
+
     // useEffect to look out to all todos and set these at the localStorage
     useEffect( () => localStorage.setItem( KEY , JSON.stringify( todos ) ) , [todos]);
 
@@ -55,21 +66,21 @@ function AppLogic(){
         let { title , description , done , hide , id } = newTodos[index];
 
         const toggleCheck = () => {
-        newTodos[index].done = !newTodos[index].done;
-        setTodos(newTodos);
+            newTodos[index].done = !newTodos[index].done;
+            setTodos(newTodos);
         }
 
         const remove = () => {
-        newTodos.splice( index , 1 );
-        setTodos(newTodos);
+            newTodos.splice( index , 1 );
+            setTodos(newTodos);
         };
 
         const edit = () => {
-        setNewTitle(title);
-        setNewDescription(description);
-        setCompleted(done);
-        SETTODO({ title, description, done, hide, id });
-        setHideModal(!hideModal);
+            setNewTitle(title);
+            setNewDescription(description);
+            setCompleted(done);
+            SETTODO({ title, description, done, hide, id });
+            setHideModal(!hideModal);
         };
     
         return { remove , edit , toggleCheck  };
@@ -81,31 +92,31 @@ function AppLogic(){
         const newTodos = [...todos];
 
         const toggleCompleted = () => {
-        TODO.done = !TODO.done;
-        setCompleted(TODO.done);
-        newTodos[index].done = completed;
-        setTodos(newTodos);
+            TODO.done = !TODO.done;
+            setCompleted(TODO.done);
+            newTodos[index].done = completed;
+            setTodos(newTodos);
         }
     
         const setNewValues = () => {
-        if(!newTitle || !newDescription){
-            setHideAlertModal(false);
-            return;
-        }
-        setHideAlertModal(true);
-        //Injecting new values
-        TODO.title = newTitle;
-        TODO.description = newDescription;
-        TODO.done = completed;
-        TODO.hide = false;
-        TODO.id = uuid();
+            if(!newTitle || !newDescription){
+                setHideAlertModal(false);
+                return;
+            }
+            setHideAlertModal(true);
+            //Injecting new values
+            TODO.title = newTitle;
+            TODO.description = newDescription;
+            TODO.done = completed;
+            TODO.hide = false;
+            TODO.id = uuid();
 
-        SETTODO({...TODO});
+            SETTODO({...TODO});
 
-        newTodos.splice( index, 1 , TODO );
+            newTodos.splice( index, 1 , TODO );
 
-        setTodos(newTodos);
-        setHideModal(!hideModal);
+            setTodos(newTodos);
+            setHideModal(!hideModal);
         }
 
         return { toggleCompleted , setNewValues }
@@ -116,19 +127,19 @@ function AppLogic(){
         const { id , checked } = target;
 
         for(const todo of todos){
-        todo.hide=false;
-        const searchedLower = search.toLowerCase();
-        const hasSearched = todo.title.toLowerCase().includes(searchedLower) || todo.description.toLowerCase().includes(searchedLower);
+            todo.hide=false;
+            const searchedLower = search.toLowerCase();
+            const hasSearched = todo.title.toLowerCase().includes(searchedLower) || todo.description.toLowerCase().includes(searchedLower);
 
-        if( (hasSearched) && (id==='Done' && checked && todo.done)){
-            todo.hide = false;
-        }else if( (hasSearched) && (id==='Uncompleted' && checked && !todo.done)){
-            todo.hide = false;
-        }else if( (hasSearched) && (id==='All' && checked)){
-            todo.hide = false;
-        }else{
-            todo.hide = true;
-        }
+            if( (hasSearched) && (id==='Done' && checked && todo.done)){
+                todo.hide = false;
+            }else if( (hasSearched) && (id==='Uncompleted' && checked && !todo.done)){
+                todo.hide = false;
+            }else if( (hasSearched) && (id==='All' && checked)){
+                todo.hide = false;
+            }else{
+                todo.hide = true;
+            }
             setTodos([...todos]);
         }
 

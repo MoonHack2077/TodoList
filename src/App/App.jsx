@@ -4,14 +4,16 @@ import { NavBar } from '../components/NavBar/Nav/NavBar.jsx';
 import { Detail } from '../components/Create/Detail/Detail.jsx';
 import { Modal } from '../components/Modal/Modal.jsx';
 import { Alert } from '../components/Alert/Alert.jsx';
-import { AppLogic } from '../Logic/AppLogic.js';
+import { AppLogic } from './AppLogic.js';
 import './App.css';
 
 
 function App() {
-  const { create , setUpTodo , modalSettings , filters , removeAllDone , getHideAlerts , SetSearch , States } = AppLogic();
+  const { create , setUpTodo , modalSettings , filters , removeAllDone , getHideAlerts , SetStates , States } = AppLogic();
   const { hideAlertDetail , hideAlertModal } = getHideAlerts();
   const { todos , title , description , search , hideModal , newTitle , newDescription , completed } = States();
+  const { SetTitle , SetDescription , SetNewTitle , SetNewDescription ,  SetSearch } = SetStates();
+
   return (
     <div className = 'App'>
 
@@ -19,9 +21,9 @@ function App() {
         hideModal={ hideModal } 
         hideAlertModal = { hideAlertModal }
         titleValue={ newTitle } 
-        titleChange={ e => setNewTitle( e.target.value )} 
+        titleChange={ e => SetNewTitle( e.target.value )} 
         descriptionValue={ newDescription } 
-        descriptionChange={ e => setNewDescription( e.target.value )} 
+        descriptionChange={ e => SetNewDescription( e.target.value )} 
         completed={ completed }
         onClick={ modalSettings }
       />
@@ -42,14 +44,14 @@ function App() {
 
           <Detail 
             value = { title } 
-            onChange= { e => setTitle( e.target.value ) } 
+            onChange= { e => SetTitle( e.target.value ) } 
             info = 'Title'
             placeholder = 'Add a Title...'
           />
 
           <Detail 
             value = { description } 
-            onChange = { e => setDescription( e.target.value ) } 
+            onChange = { e => SetDescription( e.target.value ) } 
             info = 'Description' 
             placeholder = 'Add a Description...'
           />
