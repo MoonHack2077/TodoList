@@ -42,7 +42,7 @@ function Modal({
                         onClick={ () => toggleCompleted() } 
                     />
                     <BtnSet 
-                        className='btn-set'
+                        className='btn-set inputs_config'
                         value="Save" 
                         onClick={ () => setNewValues() }
                     />

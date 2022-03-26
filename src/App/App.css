@@ -3,11 +3,20 @@
   min-height: 100vh;
   background-color: #222;
   text-align: center;
+  position: relative;
+  top:0;
+}
+.inputs_config{  
+  outline: none;
+  border: none;
+  border-radius: var(--input-radio);
+  padding: var(--input-padding);
 }
 .container{
-  margin: 40px;
+  /* margin: 40px; */
   padding-top: 50px;
 }
+
 .Details{
   display: flex;
   flex-wrap: wrap;
@@ -17,17 +26,17 @@
   align-items: center;
   padding: 10px 0 30px;
   border-bottom: 1px solid var(--white);
+  margin-top: 40px; 
 }
+
 .none{
     display: none;
 }
-.remove{
-  margin-bottom: 20px;
-  transition: filter 1s ease;
-}
+
 .notDones , .notDones:focus{
   filter: brightness(.5);
 }
+
 @media screen and (max-width: 702px){
   .Details{
     flex-direction: column;

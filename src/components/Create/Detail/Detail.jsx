@@ -7,7 +7,7 @@ function Detail({ info, placeholder,value, onChange }){
         <div className='Detail'>
             <label className='Detail-label' htmlFor={ info }>{ info }</label>
             <SetValues 
-                className='SetValues' 
+                className='inputs_config' 
                 value={ value } 
                 onChange={ onChange } 
                 placeholder={ placeholder } 

@@ -56,20 +56,20 @@ function App() {
             placeholder = 'Add a Description...'
           />
 
-          <BtnSet className='btn-set' value='Add' onClick = { create }/>
+          <BtnSet className='btn-set inputs_config' value='Add' onClick = { create }/>
 
         </div>
 
-      <div className='TodoList-container'>
-        <TodoList 
-            onClick = { setUpTodo }
-            todos = { todos }
-          />
-      </div>
+        <div className='TodoList-container'>
+          <TodoList 
+              onClick = { setUpTodo }
+              todos = { todos }
+            />
+        </div>
       </section>
 
       <BtnSet 
-          className={`btn-set remove ${!todos.some( todo => todo.done ) && 'notDones'}`}
+          className={`btn-set remove inputs_config ${!todos.some( todo => todo.done ) && 'notDones'}`}
           value='Remove all done' 
           onClick={ removeAllDone }
       />

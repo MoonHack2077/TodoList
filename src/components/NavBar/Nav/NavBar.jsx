@@ -20,7 +20,7 @@ function NavBar({ onClick , onChange , value }){
                     <Checkbox onClick={ onClick } info='Done'/>
                     <Checkbox onClick={ onClick } info='Uncompleted'/>
                     <SetValues 
-                        className='SetValues SetValues-Nav' 
+                        className='inputs_config SetValues-Nav' 
                         value={ value }
                         onChange={ onChange } 
                         placeholder='Search Todo'

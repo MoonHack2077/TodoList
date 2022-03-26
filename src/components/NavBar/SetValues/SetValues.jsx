@@ -1,5 +1,4 @@
 import React from 'react';
-import './SetValues.css';
 
 function SetValues({ placeholder, info, onChange, value , className}){
     return (

@@ -1,13 +1,15 @@
 .btn-set{
   width: 155px;
-  outline: none;
-  border: none;
-  color: var(--white);;
-  padding: var(--input-padding);
+  color: var(--white);
   background-color: var(--btn-set-color);
-  border-radius: var(--input-radio);
   cursor: pointer;
 }
+
 .btn-set:hover{
   filter: brightness(1.2);
+}
+
+.remove{
+  margin: 20px 0;
+  transition: filter 1s ease;
 }
