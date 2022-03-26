@@ -4,7 +4,7 @@
   border: none;
   color: var(--white);;
   padding: var(--input-padding);
-  background-color: var(--add-remove-btn);
+  background-color: var(--btn-set-color);
   border-radius: var(--input-radio);
   cursor: pointer;
 }

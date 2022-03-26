@@ -23,6 +23,10 @@
 }
 .remove{
   margin-bottom: 20px;
+  transition: filter 1s ease;
+}
+.notDones , .notDones:focus{
+  filter: brightness(.5);
 }
 @media screen and (max-width: 702px){
   .Details{

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkboxes } from '../Checkboxes/Checkboxes';
+import { Checkbox } from '../Checkbox/Checkbox';
 import { SetValues } from '../SetValues/SetValues.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars} from '@fortawesome/free-solid-svg-icons';
@@ -16,9 +16,9 @@ function NavBar({ onClick , onChange , value }){
             <section className='filters-container'  >
                 <div className='filters' id={ hideFilters ? 'hidden' : '' } >
                     <span className='filters-span'>Filters</span>
-                    <Checkboxes onClick={ onClick } info='All'/>
-                    <Checkboxes onClick={ onClick } info='Done'/>
-                    <Checkboxes onClick={ onClick } info='Uncompleted'/>
+                    <Checkbox onClick={ onClick } info='All'/>
+                    <Checkbox onClick={ onClick } info='Done'/>
+                    <Checkbox onClick={ onClick } info='Uncompleted'/>
                     <SetValues 
                         className='SetValues SetValues-Nav' 
                         value={ value }

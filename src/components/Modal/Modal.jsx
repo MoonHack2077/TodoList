@@ -2,6 +2,7 @@ import React from 'react';
 import { Detail } from '../Create/Detail/Detail.jsx';
 import { Alert } from '../Alert/Alert.jsx';
 import { BtnSet } from '../Create/Button/BtnSet.jsx';
+import { Checkbox } from '../NavBar/Checkbox/Checkbox.jsx';
 import './Modal.css';
 
 function Modal({ 
@@ -34,16 +35,12 @@ function Modal({
                         onChange={ descriptionChange }
                     />
                 </div>
-               <div className='completed'>
-                    <label htmlFor="completed"> Completed </label>
-                    <input 
-                        id='completed' 
-                        type="checkbox" 
-                        checked={ completed } 
-                        onChange={ () => toggleCompleted() }
+                <div className='pepe'>
+                    <Checkbox 
+                        info='Completed' 
+                        checked={ completed }
+                        onClick={ () => toggleCompleted() } 
                     />
-                </div> 
-                <div className='save'>
                     <BtnSet 
                         className='btn-set'
                         value="Save" 

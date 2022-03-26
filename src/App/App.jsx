@@ -69,7 +69,7 @@ function App() {
       </section>
 
       <BtnSet 
-          className='btn-set remove'
+          className={`btn-set remove ${!todos.some( todo => todo.done ) && 'notDones'}`}
           value='Remove all done' 
           onClick={ removeAllDone }
       />
