@@ -9,9 +9,8 @@ import './App.css';
 
 
 function App() {
-  const { create , setUpTodo , modalSettings , filters , removeAllDone , getHideAlerts , SetStates , States } = AppLogic();
-  const { hideAlertDetail , hideAlertModal } = getHideAlerts();
-  const { todos , title , description , search , hideModal , newTitle , newDescription , completed } = States();
+  const { create , setUpTodo , modalSettings , filters , removeAllDone  , SetStates , States } = AppLogic();
+  const { todos , title , description , search , hideModal , newTitle , newDescription, hideAlert , completed } = States();
   const { SetTitle , SetDescription , SetNewTitle , SetNewDescription ,  SetSearch } = SetStates();
 
   return (
@@ -19,7 +18,6 @@ function App() {
 
       <Modal 
         hideModal={ hideModal } 
-        hideAlertModal = { hideAlertModal }
         titleValue={ newTitle } 
         titleChange={ e => SetNewTitle( e.target.value )} 
         descriptionValue={ newDescription } 
@@ -38,7 +36,7 @@ function App() {
         <Alert 
           className='Alert-Detail'
           message='Title and description are required!!' 
-          hide={ hideAlertDetail }
+          hide={ hideAlert }
       />
         <div className = 'Details'>
 

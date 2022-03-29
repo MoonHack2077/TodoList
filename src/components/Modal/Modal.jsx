@@ -1,13 +1,11 @@
 import React from 'react';
 import { Detail } from '../Create/Detail/Detail.jsx';
-import { Alert } from '../Alert/Alert.jsx';
 import { BtnSet } from '../Create/Button/BtnSet.jsx';
 import { Checkbox } from '../NavBar/Checkbox/Checkbox.jsx';
 import './Modal.css';
 
 function Modal({ 
     hideModal, 
-    hideAlertModal,
     onClick, 
     titleValue,
     titleChange, 
@@ -47,11 +45,6 @@ function Modal({
                         onClick={ () => setNewValues() }
                     />
                 </div>
-                <Alert 
-                    className='Alert-Modal'
-                    message='Title and description are required!!' 
-                    hide={ hideAlertModal }  
-                />
             </div>
         </div>
     )

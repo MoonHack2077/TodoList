@@ -4,7 +4,7 @@
   background-color: #222;
   text-align: center;
   position: relative;
-  top:0;
+  top: 0;
 }
 .inputs_config{  
   outline: none;
@@ -13,7 +13,6 @@
   padding: var(--input-padding);
 }
 .container{
-  /* margin: 40px; */
   padding-top: 50px;
 }
 
@@ -26,7 +25,8 @@
   align-items: center;
   padding: 10px 0 30px;
   border-bottom: 1px solid var(--white);
-  margin-top: 40px; 
+  margin-top: 70px; 
+  padding-top: 20px;
 }
 
 .none{

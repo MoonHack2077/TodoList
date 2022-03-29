@@ -13,17 +13,12 @@ function AppLogic(){
     const [ description , setDescription ] = useState('');
     const [ search , setSearch ] = useState('');
     const [ hideModal , setHideModal ] = useState(true);
-    const [ hideAlertDetail , setHideAlertDetail ] = useState(true);
-    const [ hideAlertModal , setHideAlertModal ] = useState(true);
+    const [ hideAlert , setHideAlert ] = useState(true);
     const [ newTitle , setNewTitle ] = useState('');
     const [ newDescription , setNewDescription ] = useState('');
     const [ completed , setCompleted ] = useState(false);
     const [ TODO , SETTODO ] = useState({});
 
-    //Function to get the state of alerts
-    const getHideAlerts = () =>{
-        return { hideAlertDetail , hideAlertModal }
-    }
     
     //Function to return all states
     const States = () =>{
@@ -35,6 +30,7 @@ function AppLogic(){
             newTitle , 
             newDescription , 
             completed , 
+            hideAlert ,
             TODO 
         }
     }
@@ -56,10 +52,10 @@ function AppLogic(){
     //Create todo
     const create = () => {
         if(!title || !description){
-            setHideAlertDetail(false);
+            setHideAlert(false);
             return;
         }
-        setHideAlertDetail(true);
+        setHideAlert(true);
         const todo = { title , description , done: false , id: uuid() };
         setTodos([...todos, todo]);
         setTitle('');
@@ -91,6 +87,7 @@ function AppLogic(){
             setCompleted(done);
             SETTODO({ title, description, done, hide, id });
             setHideModal(!hideModal);
+            setHideAlert(true);
         };
     
         return { remove , edit , toggleCheck  };
@@ -110,10 +107,10 @@ function AppLogic(){
     
         const setNewValues = () => {
             if(!newTitle || !newDescription){
-                setHideAlertModal(false);
+                setHideAlert(false);
                 return;
             }
-            setHideAlertModal(true);
+            setHideAlert(true);
 
             //Injecting new values
             TODO.title = newTitle;
@@ -167,7 +164,6 @@ function AppLogic(){
         modalSettings , 
         filters , 
         removeAllDone , 
-        getHideAlerts , 
         SetStates , 
         States
     }
