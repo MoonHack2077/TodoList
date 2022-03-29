@@ -35,7 +35,7 @@ function Modal({
                         onChange={ descriptionChange }
                     />
                 </div>
-                <div className='pepe'>
+                <div className='check_save'>
                     <Checkbox 
                         info='Completed' 
                         checked={ completed }

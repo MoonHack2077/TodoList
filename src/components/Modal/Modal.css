@@ -32,18 +32,18 @@
     justify-content: center;
     align-items: center;
 }
+.set h1{
+    color: var(--ligth-blue);
+}
 
 .completed{
     font-size: 20px;
 }
 
-.pepe{
+.check_save{
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
     align-items: center;
-}
-.set h1{
-    color: var(--ligth-blue);
 }
